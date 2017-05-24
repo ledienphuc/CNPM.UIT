@@ -1,0 +1,601 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QUANLYDATPHONGModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'QUANLYDATPHONG.dbo.BAOCAO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="BAOCAO">
+          <Key>
+            <PropertyRef Name="THANG" />
+            <PropertyRef Name="LOAIPHONG" />
+          </Key>
+          <Property Name="THANG" Type="int" Nullable="false" />
+          <Property Name="LOAIPHONG" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="DOANHTHU" Type="int" />
+          <Property Name="TYLE" Type="float" />
+        </EntityType>
+        <EntityType Name="CTHD">
+          <Key>
+            <PropertyRef Name="MACTHD" />
+          </Key>
+          <Property Name="MACTHD" Type="int" Nullable="false" />
+          <Property Name="MAHD" Type="int" Nullable="false" />
+          <Property Name="MAPHONG" Type="int" Nullable="false" />
+          <Property Name="SONGAYTHUE" Type="int" Nullable="false" />
+          <Property Name="THANHTIEN" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CTPT">
+          <Key>
+            <PropertyRef Name="MACTPT" />
+          </Key>
+          <Property Name="MACTPT" Type="int" Nullable="false" />
+          <Property Name="MAKHACHHANG" Type="int" />
+          <Property Name="MAPHIEUTHUE" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HOADON">
+          <Key>
+            <PropertyRef Name="MAHD" />
+          </Key>
+          <Property Name="MAHD" Type="int" Nullable="false" />
+          <Property Name="DIACHI" Type="nvarchar" MaxLength="100" />
+          <Property Name="TRIGIA" Type="nvarchar" MaxLength="10" />
+          <Property Name="SOLUONGKHACH" Type="int" />
+        </EntityType>
+        <EntityType Name="KHACHHANG">
+          <Key>
+            <PropertyRef Name="MAKHACHHANG" />
+          </Key>
+          <Property Name="MAKHACHHANG" Type="int" Nullable="false" />
+          <Property Name="MALOAIKHACH" Type="int" Nullable="false" />
+          <Property Name="CMND" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="DIACHI" Type="nvarchar" MaxLength="100" />
+          <Property Name="MAPHONG" Type="int" />
+        </EntityType>
+        <EntityType Name="LOAIKHACH">
+          <Key>
+            <PropertyRef Name="MALOAIKHACH" />
+          </Key>
+          <Property Name="MALOAIKHACH" Type="int" Nullable="false" />
+          <Property Name="TENLOAIKHACH" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOAIPHONG">
+          <Key>
+            <PropertyRef Name="MALOAIPHONG" />
+          </Key>
+          <Property Name="MALOAIPHONG" Type="int" Nullable="false" />
+          <Property Name="TENLOAIPHONG" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="DONGIA" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PHIEUTHUE">
+          <Key>
+            <PropertyRef Name="MAPHIEUTHUE" />
+          </Key>
+          <Property Name="MAPHIEUTHUE" Type="int" Nullable="false" />
+          <Property Name="MAPHONG" Type="int" Nullable="false" />
+          <Property Name="NGAYTHUE" Type="smalldatetime" Nullable="false" />
+          <Property Name="SOLUONGKHACH" Type="int" />
+        </EntityType>
+        <EntityType Name="PHONG">
+          <Key>
+            <PropertyRef Name="MAPHONG" />
+          </Key>
+          <Property Name="MAPHONG" Type="int" Nullable="false" />
+          <Property Name="TENPHONG" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="MALOAIPHONG" Type="int" Nullable="false" />
+          <Property Name="GHICHU" Type="nvarchar" MaxLength="100" />
+          <Property Name="TINHTRANG" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'QUANLYDATPHONG.dbo.QUYDINHSOKHACH' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="QUYDINHSOKHACH">
+          <Property Name="SOKHACHTOIDA" Type="int" />
+        </EntityType>-->
+        <Association Name="FK__CTHD__MAHD__267ABA7A">
+          <End Role="HOADON" Type="Self.HOADON" Multiplicity="1" />
+          <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOADON">
+              <PropertyRef Name="MAHD" />
+            </Principal>
+            <Dependent Role="CTHD">
+              <PropertyRef Name="MAHD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CTHD__MAPHONG__276EDEB3">
+          <End Role="PHONG" Type="Self.PHONG" Multiplicity="1" />
+          <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHONG">
+              <PropertyRef Name="MAPHONG" />
+            </Principal>
+            <Dependent Role="CTHD">
+              <PropertyRef Name="MAPHONG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CTPT__MAKHACHHAN__1BFD2C07">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="CTPT" Type="Self.CTPT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="MAKHACHHANG" />
+            </Principal>
+            <Dependent Role="CTPT">
+              <PropertyRef Name="MAKHACHHANG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CTPT__MAPHIEUTHU__1CF15040">
+          <End Role="PHIEUTHUE" Type="Self.PHIEUTHUE" Multiplicity="1" />
+          <End Role="CTPT" Type="Self.CTPT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHIEUTHUE">
+              <PropertyRef Name="MAPHIEUTHUE" />
+            </Principal>
+            <Dependent Role="CTPT">
+              <PropertyRef Name="MAPHIEUTHUE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KHACHHANG__MALOA__2F10007B">
+          <End Role="LOAIKHACH" Type="Self.LOAIKHACH" Multiplicity="1" />
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAIKHACH">
+              <PropertyRef Name="MALOAIKHACH" />
+            </Principal>
+            <Dependent Role="KHACHHANG">
+              <PropertyRef Name="MALOAIKHACH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KHACHHANG__MAPHO__1273C1CD">
+          <End Role="PHONG" Type="Self.PHONG" Multiplicity="0..1" />
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHONG">
+              <PropertyRef Name="MAPHONG" />
+            </Principal>
+            <Dependent Role="KHACHHANG">
+              <PropertyRef Name="MAPHONG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PHIEUTHUE__MAPHO__182C9B23">
+          <End Role="PHONG" Type="Self.PHONG" Multiplicity="1" />
+          <End Role="PHIEUTHUE" Type="Self.PHIEUTHUE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHONG">
+              <PropertyRef Name="MAPHONG" />
+            </Principal>
+            <Dependent Role="PHIEUTHUE">
+              <PropertyRef Name="MAPHONG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PHONG__MAPHONG__2E1BDC42">
+          <End Role="LOAIPHONG" Type="Self.LOAIPHONG" Multiplicity="1" />
+          <End Role="PHONG" Type="Self.PHONG" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="LOAIPHONG">
+              <PropertyRef Name="MALOAIPHONG" />
+            </Principal>
+            <Dependent Role="PHONG">
+              <PropertyRef Name="MAPHONG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QUANLYDATPHONGModelStoreContainer">
+          <EntitySet Name="CTHD" EntityType="Self.CTHD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CTPT" EntityType="Self.CTPT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HOADON" EntityType="Self.HOADON" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KHACHHANG" EntityType="Self.KHACHHANG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOAIKHACH" EntityType="Self.LOAIKHACH" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOAIPHONG" EntityType="Self.LOAIPHONG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PHIEUTHUE" EntityType="Self.PHIEUTHUE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PHONG" EntityType="Self.PHONG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BAOCAO" EntityType="Self.BAOCAO" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [BAOCAO].[THANG] AS [THANG], 
+    [BAOCAO].[LOAIPHONG] AS [LOAIPHONG], 
+    [BAOCAO].[DOANHTHU] AS [DOANHTHU], 
+    [BAOCAO].[TYLE] AS [TYLE]
+    FROM [dbo].[BAOCAO] AS [BAOCAO]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__CTHD__MAHD__267ABA7A" Association="Self.FK__CTHD__MAHD__267ABA7A">
+            <End Role="HOADON" EntitySet="HOADON" />
+            <End Role="CTHD" EntitySet="CTHD" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CTHD__MAPHONG__276EDEB3" Association="Self.FK__CTHD__MAPHONG__276EDEB3">
+            <End Role="PHONG" EntitySet="PHONG" />
+            <End Role="CTHD" EntitySet="CTHD" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CTPT__MAKHACHHAN__1BFD2C07" Association="Self.FK__CTPT__MAKHACHHAN__1BFD2C07">
+            <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+            <End Role="CTPT" EntitySet="CTPT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CTPT__MAPHIEUTHU__1CF15040" Association="Self.FK__CTPT__MAPHIEUTHU__1CF15040">
+            <End Role="PHIEUTHUE" EntitySet="PHIEUTHUE" />
+            <End Role="CTPT" EntitySet="CTPT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KHACHHANG__MALOA__2F10007B" Association="Self.FK__KHACHHANG__MALOA__2F10007B">
+            <End Role="LOAIKHACH" EntitySet="LOAIKHACH" />
+            <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KHACHHANG__MAPHO__1273C1CD" Association="Self.FK__KHACHHANG__MAPHO__1273C1CD">
+            <End Role="PHONG" EntitySet="PHONG" />
+            <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PHIEUTHUE__MAPHO__182C9B23" Association="Self.FK__PHIEUTHUE__MAPHO__182C9B23">
+            <End Role="PHONG" EntitySet="PHONG" />
+            <End Role="PHIEUTHUE" EntitySet="PHIEUTHUE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PHONG__MAPHONG__2E1BDC42" Association="Self.FK__PHONG__MAPHONG__2E1BDC42">
+            <End Role="LOAIPHONG" EntitySet="LOAIPHONG" />
+            <End Role="PHONG" EntitySet="PHONG" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QUANLYDATPHONGModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CTHD">
+          <Key>
+            <PropertyRef Name="MACTHD" />
+          </Key>
+          <Property Name="MACTHD" Type="Int32" Nullable="false" />
+          <Property Name="MAHD" Type="Int32" Nullable="false" />
+          <Property Name="MAPHONG" Type="Int32" Nullable="false" />
+          <Property Name="SONGAYTHUE" Type="Int32" Nullable="false" />
+          <Property Name="THANHTIEN" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="HOADON" Relationship="Self.FK__CTHD__MAHD__267ABA7A" FromRole="CTHD" ToRole="HOADON" />
+          <NavigationProperty Name="PHONG" Relationship="Self.FK__CTHD__MAPHONG__276EDEB3" FromRole="CTHD" ToRole="PHONG" />
+        </EntityType>
+        <EntityType Name="CTPT">
+          <Key>
+            <PropertyRef Name="MACTPT" />
+          </Key>
+          <Property Name="MACTPT" Type="Int32" Nullable="false" />
+          <Property Name="MAKHACHHANG" Type="Int32" />
+          <Property Name="MAPHIEUTHUE" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="KHACHHANG" Relationship="Self.FK__CTPT__MAKHACHHAN__1BFD2C07" FromRole="CTPT" ToRole="KHACHHANG" />
+          <NavigationProperty Name="PHIEUTHUE" Relationship="Self.FK__CTPT__MAPHIEUTHU__1CF15040" FromRole="CTPT" ToRole="PHIEUTHUE" />
+        </EntityType>
+        <EntityType Name="HOADON">
+          <Key>
+            <PropertyRef Name="MAHD" />
+          </Key>
+          <Property Name="MAHD" Type="Int32" Nullable="false" />
+          <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TRIGIA" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="SOLUONGKHACH" Type="Int32" />
+          <NavigationProperty Name="CTHDs" Relationship="Self.FK__CTHD__MAHD__267ABA7A" FromRole="HOADON" ToRole="CTHD" />
+        </EntityType>
+        <EntityType Name="KHACHHANG">
+          <Key>
+            <PropertyRef Name="MAKHACHHANG" />
+          </Key>
+          <Property Name="MAKHACHHANG" Type="Int32" Nullable="false" />
+          <Property Name="MALOAIKHACH" Type="Int32" Nullable="false" />
+          <Property Name="CMND" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MAPHONG" Type="Int32" />
+          <NavigationProperty Name="CTPTs" Relationship="Self.FK__CTPT__MAKHACHHAN__1BFD2C07" FromRole="KHACHHANG" ToRole="CTPT" />
+          <NavigationProperty Name="LOAIKHACH" Relationship="Self.FK__KHACHHANG__MALOA__2F10007B" FromRole="KHACHHANG" ToRole="LOAIKHACH" />
+          <NavigationProperty Name="PHONG" Relationship="Self.FK__KHACHHANG__MAPHO__1273C1CD" FromRole="KHACHHANG" ToRole="PHONG" />
+        </EntityType>
+        <EntityType Name="LOAIKHACH">
+          <Key>
+            <PropertyRef Name="MALOAIKHACH" />
+          </Key>
+          <Property Name="MALOAIKHACH" Type="Int32" Nullable="false" />
+          <Property Name="TENLOAIKHACH" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="KHACHHANGs" Relationship="Self.FK__KHACHHANG__MALOA__2F10007B" FromRole="LOAIKHACH" ToRole="KHACHHANG" />
+        </EntityType>
+        <EntityType Name="LOAIPHONG">
+          <Key>
+            <PropertyRef Name="MALOAIPHONG" />
+          </Key>
+          <Property Name="MALOAIPHONG" Type="Int32" Nullable="false" />
+          <Property Name="TENLOAIPHONG" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DONGIA" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PHONG" Relationship="Self.FK__PHONG__MAPHONG__2E1BDC42" FromRole="LOAIPHONG" ToRole="PHONG" />
+        </EntityType>
+        <EntityType Name="PHIEUTHUE">
+          <Key>
+            <PropertyRef Name="MAPHIEUTHUE" />
+          </Key>
+          <Property Name="MAPHIEUTHUE" Type="Int32" Nullable="false" />
+          <Property Name="MAPHONG" Type="Int32" Nullable="false" />
+          <Property Name="NGAYTHUE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="SOLUONGKHACH" Type="Int32" />
+          <NavigationProperty Name="CTPTs" Relationship="Self.FK__CTPT__MAPHIEUTHU__1CF15040" FromRole="PHIEUTHUE" ToRole="CTPT" />
+          <NavigationProperty Name="PHONG" Relationship="Self.FK__PHIEUTHUE__MAPHO__182C9B23" FromRole="PHIEUTHUE" ToRole="PHONG" />
+        </EntityType>
+        <EntityType Name="PHONG">
+          <Key>
+            <PropertyRef Name="MAPHONG" />
+          </Key>
+          <Property Name="MAPHONG" Type="Int32" Nullable="false" />
+          <Property Name="TENPHONG" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MALOAIPHONG" Type="Int32" Nullable="false" />
+          <Property Name="GHICHU" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TINHTRANG" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CTHDs" Relationship="Self.FK__CTHD__MAPHONG__276EDEB3" FromRole="PHONG" ToRole="CTHD" />
+          <NavigationProperty Name="KHACHHANGs" Relationship="Self.FK__KHACHHANG__MAPHO__1273C1CD" FromRole="PHONG" ToRole="KHACHHANG" />
+          <NavigationProperty Name="LOAIPHONG" Relationship="Self.FK__PHONG__MAPHONG__2E1BDC42" FromRole="PHONG" ToRole="LOAIPHONG" />
+          <NavigationProperty Name="PHIEUTHUEs" Relationship="Self.FK__PHIEUTHUE__MAPHO__182C9B23" FromRole="PHONG" ToRole="PHIEUTHUE" />
+        </EntityType>
+        <EntityType Name="BAOCAO">
+          <Key>
+            <PropertyRef Name="THANG" />
+            <PropertyRef Name="LOAIPHONG" />
+          </Key>
+          <Property Name="THANG" Type="Int32" Nullable="false" />
+          <Property Name="LOAIPHONG" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DOANHTHU" Type="Int32" />
+          <Property Name="TYLE" Type="Double" />
+        </EntityType>
+        <Association Name="FK__CTHD__MAHD__267ABA7A">
+          <End Role="HOADON" Type="Self.HOADON" Multiplicity="1" />
+          <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOADON">
+              <PropertyRef Name="MAHD" />
+            </Principal>
+            <Dependent Role="CTHD">
+              <PropertyRef Name="MAHD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CTHD__MAPHONG__276EDEB3">
+          <End Role="PHONG" Type="Self.PHONG" Multiplicity="1" />
+          <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHONG">
+              <PropertyRef Name="MAPHONG" />
+            </Principal>
+            <Dependent Role="CTHD">
+              <PropertyRef Name="MAPHONG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CTPT__MAKHACHHAN__1BFD2C07">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="CTPT" Type="Self.CTPT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="MAKHACHHANG" />
+            </Principal>
+            <Dependent Role="CTPT">
+              <PropertyRef Name="MAKHACHHANG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CTPT__MAPHIEUTHU__1CF15040">
+          <End Role="PHIEUTHUE" Type="Self.PHIEUTHUE" Multiplicity="1" />
+          <End Role="CTPT" Type="Self.CTPT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHIEUTHUE">
+              <PropertyRef Name="MAPHIEUTHUE" />
+            </Principal>
+            <Dependent Role="CTPT">
+              <PropertyRef Name="MAPHIEUTHUE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KHACHHANG__MALOA__2F10007B">
+          <End Role="LOAIKHACH" Type="Self.LOAIKHACH" Multiplicity="1" />
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAIKHACH">
+              <PropertyRef Name="MALOAIKHACH" />
+            </Principal>
+            <Dependent Role="KHACHHANG">
+              <PropertyRef Name="MALOAIKHACH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KHACHHANG__MAPHO__1273C1CD">
+          <End Role="PHONG" Type="Self.PHONG" Multiplicity="0..1" />
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHONG">
+              <PropertyRef Name="MAPHONG" />
+            </Principal>
+            <Dependent Role="KHACHHANG">
+              <PropertyRef Name="MAPHONG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PHONG__MAPHONG__2E1BDC42">
+          <End Role="LOAIPHONG" Type="Self.LOAIPHONG" Multiplicity="1" />
+          <End Role="PHONG" Type="Self.PHONG" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="LOAIPHONG">
+              <PropertyRef Name="MALOAIPHONG" />
+            </Principal>
+            <Dependent Role="PHONG">
+              <PropertyRef Name="MAPHONG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PHIEUTHUE__MAPHO__182C9B23">
+          <End Role="PHONG" Type="Self.PHONG" Multiplicity="1" />
+          <End Role="PHIEUTHUE" Type="Self.PHIEUTHUE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHONG">
+              <PropertyRef Name="MAPHONG" />
+            </Principal>
+            <Dependent Role="PHIEUTHUE">
+              <PropertyRef Name="MAPHONG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QUANLYDATPHONGEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CTHDs" EntityType="Self.CTHD" />
+          <EntitySet Name="CTPTs" EntityType="Self.CTPT" />
+          <EntitySet Name="HOADONs" EntityType="Self.HOADON" />
+          <EntitySet Name="KHACHHANGs" EntityType="Self.KHACHHANG" />
+          <EntitySet Name="LOAIKHACHes" EntityType="Self.LOAIKHACH" />
+          <EntitySet Name="LOAIPHONGs" EntityType="Self.LOAIPHONG" />
+          <EntitySet Name="PHIEUTHUEs" EntityType="Self.PHIEUTHUE" />
+          <EntitySet Name="PHONGs" EntityType="Self.PHONG" />
+          <EntitySet Name="BAOCAOs" EntityType="Self.BAOCAO" />
+          <AssociationSet Name="FK__CTHD__MAHD__267ABA7A" Association="Self.FK__CTHD__MAHD__267ABA7A">
+            <End Role="HOADON" EntitySet="HOADONs" />
+            <End Role="CTHD" EntitySet="CTHDs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CTHD__MAPHONG__276EDEB3" Association="Self.FK__CTHD__MAPHONG__276EDEB3">
+            <End Role="PHONG" EntitySet="PHONGs" />
+            <End Role="CTHD" EntitySet="CTHDs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CTPT__MAKHACHHAN__1BFD2C07" Association="Self.FK__CTPT__MAKHACHHAN__1BFD2C07">
+            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+            <End Role="CTPT" EntitySet="CTPTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CTPT__MAPHIEUTHU__1CF15040" Association="Self.FK__CTPT__MAPHIEUTHU__1CF15040">
+            <End Role="PHIEUTHUE" EntitySet="PHIEUTHUEs" />
+            <End Role="CTPT" EntitySet="CTPTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KHACHHANG__MALOA__2F10007B" Association="Self.FK__KHACHHANG__MALOA__2F10007B">
+            <End Role="LOAIKHACH" EntitySet="LOAIKHACHes" />
+            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KHACHHANG__MAPHO__1273C1CD" Association="Self.FK__KHACHHANG__MAPHO__1273C1CD">
+            <End Role="PHONG" EntitySet="PHONGs" />
+            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PHONG__MAPHONG__2E1BDC42" Association="Self.FK__PHONG__MAPHONG__2E1BDC42">
+            <End Role="LOAIPHONG" EntitySet="LOAIPHONGs" />
+            <End Role="PHONG" EntitySet="PHONGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PHIEUTHUE__MAPHO__182C9B23" Association="Self.FK__PHIEUTHUE__MAPHO__182C9B23">
+            <End Role="PHONG" EntitySet="PHONGs" />
+            <End Role="PHIEUTHUE" EntitySet="PHIEUTHUEs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QUANLYDATPHONGModelStoreContainer" CdmEntityContainer="QUANLYDATPHONGEntities">
+          <EntitySetMapping Name="CTHDs">
+            <EntityTypeMapping TypeName="QUANLYDATPHONGModel.CTHD">
+              <MappingFragment StoreEntitySet="CTHD">
+                <ScalarProperty Name="MACTHD" ColumnName="MACTHD" />
+                <ScalarProperty Name="MAHD" ColumnName="MAHD" />
+                <ScalarProperty Name="MAPHONG" ColumnName="MAPHONG" />
+                <ScalarProperty Name="SONGAYTHUE" ColumnName="SONGAYTHUE" />
+                <ScalarProperty Name="THANHTIEN" ColumnName="THANHTIEN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CTPTs">
+            <EntityTypeMapping TypeName="QUANLYDATPHONGModel.CTPT">
+              <MappingFragment StoreEntitySet="CTPT">
+                <ScalarProperty Name="MACTPT" ColumnName="MACTPT" />
+                <ScalarProperty Name="MAKHACHHANG" ColumnName="MAKHACHHANG" />
+                <ScalarProperty Name="MAPHIEUTHUE" ColumnName="MAPHIEUTHUE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HOADONs">
+            <EntityTypeMapping TypeName="QUANLYDATPHONGModel.HOADON">
+              <MappingFragment StoreEntitySet="HOADON">
+                <ScalarProperty Name="MAHD" ColumnName="MAHD" />
+                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+                <ScalarProperty Name="TRIGIA" ColumnName="TRIGIA" />
+                <ScalarProperty Name="SOLUONGKHACH" ColumnName="SOLUONGKHACH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KHACHHANGs">
+            <EntityTypeMapping TypeName="QUANLYDATPHONGModel.KHACHHANG">
+              <MappingFragment StoreEntitySet="KHACHHANG">
+                <ScalarProperty Name="MAKHACHHANG" ColumnName="MAKHACHHANG" />
+                <ScalarProperty Name="MALOAIKHACH" ColumnName="MALOAIKHACH" />
+                <ScalarProperty Name="CMND" ColumnName="CMND" />
+                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+                <ScalarProperty Name="MAPHONG" ColumnName="MAPHONG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOAIKHACHes">
+            <EntityTypeMapping TypeName="QUANLYDATPHONGModel.LOAIKHACH">
+              <MappingFragment StoreEntitySet="LOAIKHACH">
+                <ScalarProperty Name="MALOAIKHACH" ColumnName="MALOAIKHACH" />
+                <ScalarProperty Name="TENLOAIKHACH" ColumnName="TENLOAIKHACH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOAIPHONGs">
+            <EntityTypeMapping TypeName="QUANLYDATPHONGModel.LOAIPHONG">
+              <MappingFragment StoreEntitySet="LOAIPHONG">
+                <ScalarProperty Name="MALOAIPHONG" ColumnName="MALOAIPHONG" />
+                <ScalarProperty Name="TENLOAIPHONG" ColumnName="TENLOAIPHONG" />
+                <ScalarProperty Name="DONGIA" ColumnName="DONGIA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PHIEUTHUEs">
+            <EntityTypeMapping TypeName="QUANLYDATPHONGModel.PHIEUTHUE">
+              <MappingFragment StoreEntitySet="PHIEUTHUE">
+                <ScalarProperty Name="MAPHIEUTHUE" ColumnName="MAPHIEUTHUE" />
+                <ScalarProperty Name="MAPHONG" ColumnName="MAPHONG" />
+                <ScalarProperty Name="NGAYTHUE" ColumnName="NGAYTHUE" />
+                <ScalarProperty Name="SOLUONGKHACH" ColumnName="SOLUONGKHACH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PHONGs">
+            <EntityTypeMapping TypeName="QUANLYDATPHONGModel.PHONG">
+              <MappingFragment StoreEntitySet="PHONG">
+                <ScalarProperty Name="MAPHONG" ColumnName="MAPHONG" />
+                <ScalarProperty Name="TENPHONG" ColumnName="TENPHONG" />
+                <ScalarProperty Name="MALOAIPHONG" ColumnName="MALOAIPHONG" />
+                <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
+                <ScalarProperty Name="TINHTRANG" ColumnName="TINHTRANG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BAOCAOs">
+            <EntityTypeMapping TypeName="QUANLYDATPHONGModel.BAOCAO">
+              <MappingFragment StoreEntitySet="BAOCAO">
+                <ScalarProperty Name="THANG" ColumnName="THANG" />
+                <ScalarProperty Name="LOAIPHONG" ColumnName="LOAIPHONG" />
+                <ScalarProperty Name="DOANHTHU" ColumnName="DOANHTHU" />
+                <ScalarProperty Name="TYLE" ColumnName="TYLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
