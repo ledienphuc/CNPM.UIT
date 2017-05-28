@@ -11,7 +11,8 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="149"/>
             <ColumnDefinition/>
-            <ColumnDefinition Width="158"/>
+            <ColumnDefinition Width="68"/>
+            <ColumnDefinition Width="90"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="9.333"/>
@@ -21,8 +22,9 @@
         </Grid.RowDefinitions>
         <TextBox HorizontalAlignment="Left" Height="22" Margin="19,17,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
         <Image Grid.Column="2" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="50" Margin="10,0,0,0" Grid.Row="1" />
-        <Label Content="Label" Grid.Column="2" HorizontalAlignment="Left" Margin="71,17,0,0" Grid.Row="1" VerticalAlignment="Top" Width="66" Height="26"/>
-        <ListView ItemsSource="{Binding DanhMucPhong}" Margin="25,52,0,64" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" HorizontalAlignment="Stretch"   >
+        <Label Content="Label" Grid.Column="3" HorizontalAlignment="Left" Margin="3,17,0,0" Grid.Row="1" VerticalAlignment="Top" Width="66" Height="26"/>
+
+        <ListView x:Name="lvPhong" ItemsSource="{Binding DanhMucPhong}" Margin="25,52,24,64" Grid.Row="2" Grid.Column="1" Grid.RowSpan="2" HorizontalAlignment="Stretch" Grid.ColumnSpan="2"   >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="TenPhong"  Width="auto" >
@@ -71,6 +73,7 @@
                             <DataTemplate>
                                 <StackPanel>
                                     <TextBlock Text="{Binding GhiChu}"/>
+
                                 </StackPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
@@ -78,12 +81,14 @@
                 </GridView>
             </ListView.View>
         </ListView>
+
+
         <Button Content="Button" Command="{Binding ShowWindow}" Grid.Column="1" HorizontalAlignment="Left" Margin="144,44,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Grid.RowSpan="2"/>
         <Button Content="them" Grid.Column="1" HorizontalAlignment="Left" Margin="65,72,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75"/>
         <Button Content="xoa" Grid.Column="1" HorizontalAlignment="Left" Margin="194,72,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75"/>
-        <Grid Height="362" Margin="10,10,8,0" Grid.Row="2" Grid.RowSpan="2" VerticalAlignment="Top" DataContext="{Binding DanhMucPhong}">
-            <TextBox HorizontalAlignment="Left" Height="23" Margin="10,179,0,0" TextWrapping="Wrap" Text="{Binding TenPhong}" VerticalAlignment="Top" Width="120"/>
-        </Grid>
+        <TextBox Height="23" Margin="29,113,10,0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding SelectedItem.TenPhong, ElementName=lvPhong}" VerticalAlignment="Top"  />
+        <TextBlock HorizontalAlignment="Left" Margin="56,155,0,0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding SelectedItem.DonGia, ElementName=lvPhong}" VerticalAlignment="Top"/>
+
 
 
 

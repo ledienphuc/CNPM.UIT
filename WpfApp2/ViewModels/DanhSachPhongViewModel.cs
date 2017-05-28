@@ -23,6 +23,7 @@ namespace WpfApp2.ViewModels
             }
         }
 
+
         public ObservableCollection<PhongViewModel> DanhMucPhong { get; set; }
         private async void LoadData()
         {
@@ -45,9 +46,15 @@ namespace WpfApp2.ViewModels
 
         }
 
+        void PhongBinding()
+        {
+            
+        }
+
         public DanhSachPhongViewModel()
         {
             LoadData();
+            PhongBinding();
 
         }
 

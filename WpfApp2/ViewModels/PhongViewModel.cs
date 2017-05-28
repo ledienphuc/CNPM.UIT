@@ -74,5 +74,7 @@ namespace WpfApp2.ViewModels
             win.Content = viewModel;
             win.Show();
         }
+
+
     }
 }

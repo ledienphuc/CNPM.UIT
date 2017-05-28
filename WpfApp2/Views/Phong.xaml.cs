@@ -26,6 +26,9 @@ namespace WpfApp2.Views
         {
             DataContext = dsPhong;
             InitializeComponent();
+            
         }
+
+
     }
 }
