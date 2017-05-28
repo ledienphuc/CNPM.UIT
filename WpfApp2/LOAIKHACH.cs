@@ -20,7 +20,7 @@ namespace WpfApp2
             this.KHACHHANGs = new HashSet<KHACHHANG>();
         }
     
-        public int MALOAIKHACH { get; set; }
+        public string MALOAIKHACH { get; set; }
         public string TENLOAIKHACH { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

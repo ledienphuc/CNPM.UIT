@@ -20,8 +20,8 @@ namespace WpfApp2
             this.CTPTs = new HashSet<CTPT>();
         }
     
-        public int MAPHIEUTHUE { get; set; }
-        public int MAPHONG { get; set; }
+        public string MAPHIEUTHUE { get; set; }
+        public string MAPHONG { get; set; }
         public System.DateTime NGAYTHUE { get; set; }
         public Nullable<int> SOLUONGKHACH { get; set; }
     

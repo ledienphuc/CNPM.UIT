@@ -13,10 +13,10 @@ namespace WpfApp2
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class QUANLYDATPHONGEntities : DbContext
+    public partial class KhachSanContext : DbContext
     {
-        public QUANLYDATPHONGEntities()
-            : base("name=QUANLYDATPHONGEntities")
+        public KhachSanContext()
+            : base("name=KhachSanContext")
         {
         }
     

@@ -9,19 +9,19 @@ using System.Threading.Tasks;
 
 namespace WpfApp2.ViewModels
 {
-    class DanhSachPhongViewModel : ViewModelBase
+    class DatPhongViewModel: ViewModelBase
     {
         public ObservableCollection<PhongViewModel> DanhMucPhong { get; set; }
         private async void LoadData()
         {
-             ObservableCollection<PhongViewModel> _danhSachPhong = new ObservableCollection<PhongViewModel>();
+            ObservableCollection<PhongViewModel> _danhSachPhong = new ObservableCollection<PhongViewModel>();
             using (var db = new KhachSanContext())
             {
                 var danhMucPhong = await (from p in db.PHONGs
                                           join lp in db.LOAIPHONGs on p.MALOAIPHONG equals lp.MALOAIPHONG
                                           orderby p.MAPHONG
-                                          select new { p.TENPHONG,p.LOAIPHONG, lp.TENLOAIPHONG,  lp.DONGIA, p.TINHTRANG, p.GHICHU }).ToListAsync();
-                foreach ( var phong in danhMucPhong)
+                                          select new { p.TENPHONG, p.LOAIPHONG, lp.TENLOAIPHONG, lp.DONGIA, p.TINHTRANG, p.GHICHU }).ToListAsync();
+                foreach (var phong in danhMucPhong)
                 {
                     PhongViewModel phongViewModel = new PhongViewModel { Phong = new PHONG { TENPHONG = phong.TENPHONG, LOAIPHONG = phong.LOAIPHONG, GHICHU = phong.GHICHU, TINHTRANG = phong.TINHTRANG } };
                     _danhSachPhong.Add(phongViewModel);
@@ -31,12 +31,9 @@ namespace WpfApp2.ViewModels
             }
 
         }
-
-        public DanhSachPhongViewModel()
+        public DatPhongViewModel()
         {
             LoadData();
-
         }
     }
-           
 }

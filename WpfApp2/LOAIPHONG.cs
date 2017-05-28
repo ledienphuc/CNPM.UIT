@@ -14,7 +14,7 @@ namespace WpfApp2
     
     public partial class LOAIPHONG
     {
-        public int MALOAIPHONG { get; set; }
+        public string MALOAIPHONG { get; set; }
         public string TENLOAIPHONG { get; set; }
         public int DONGIA { get; set; }
     

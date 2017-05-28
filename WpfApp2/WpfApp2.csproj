@@ -85,6 +85,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\DatPhong.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -94,53 +98,57 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="BAOCAO.cs">
-      <DependentUpon>KhachSanViewModel.tt</DependentUpon>
+      <DependentUpon>KhachSanModel.tt</DependentUpon>
     </Compile>
     <Compile Include="CTHD.cs">
-      <DependentUpon>KhachSanViewModel.tt</DependentUpon>
+      <DependentUpon>KhachSanModel.tt</DependentUpon>
     </Compile>
     <Compile Include="CTPT.cs">
-      <DependentUpon>KhachSanViewModel.tt</DependentUpon>
+      <DependentUpon>KhachSanModel.tt</DependentUpon>
     </Compile>
     <Compile Include="HOADON.cs">
-      <DependentUpon>KhachSanViewModel.tt</DependentUpon>
+      <DependentUpon>KhachSanModel.tt</DependentUpon>
     </Compile>
     <Compile Include="KHACHHANG.cs">
-      <DependentUpon>KhachSanViewModel.tt</DependentUpon>
+      <DependentUpon>KhachSanModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="KhachSanViewModel.Context.cs">
+    <Compile Include="KhachSanModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>KhachSanViewModel.Context.tt</DependentUpon>
+      <DependentUpon>KhachSanModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="KhachSanViewModel.cs">
+    <Compile Include="KhachSanModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>KhachSanViewModel.tt</DependentUpon>
+      <DependentUpon>KhachSanModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="KhachSanViewModel.Designer.cs">
+    <Compile Include="KhachSanModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>KhachSanViewModel.edmx</DependentUpon>
+      <DependentUpon>KhachSanModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="LOAIKHACH.cs">
-      <DependentUpon>KhachSanViewModel.tt</DependentUpon>
+      <DependentUpon>KhachSanModel.tt</DependentUpon>
     </Compile>
     <Compile Include="LOAIPHONG.cs">
-      <DependentUpon>KhachSanViewModel.tt</DependentUpon>
+      <DependentUpon>KhachSanModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PHIEUTHUE.cs">
-      <DependentUpon>KhachSanViewModel.tt</DependentUpon>
+      <DependentUpon>KhachSanModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PHONG.cs">
-      <DependentUpon>KhachSanViewModel.tt</DependentUpon>
+      <DependentUpon>KhachSanModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Services\IWindowService.cs" />
     <Compile Include="ViewModels\DanhSachPhongViewModel.cs" />
+    <Compile Include="ViewModels\DatPhongViewModel.cs" />
     <Compile Include="ViewModels\PhieuThueViewModel.cs" />
     <Compile Include="ViewModels\PhongViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
+    <Compile Include="Views\DatPhong.xaml.cs">
+      <DependentUpon>DatPhong.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -178,12 +186,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="KhachSanViewModel.edmx">
+    <EntityDeploy Include="KhachSanModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>KhachSanViewModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>KhachSanModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="KhachSanViewModel.edmx.diagram">
-      <DependentUpon>KhachSanViewModel.edmx</DependentUpon>
+    <None Include="KhachSanModel.edmx.diagram">
+      <DependentUpon>KhachSanModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -201,15 +209,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="KhachSanViewModel.Context.tt">
+    <Content Include="KhachSanModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>KhachSanViewModel.edmx</DependentUpon>
-      <LastGenOutput>KhachSanViewModel.Context.cs</LastGenOutput>
+      <DependentUpon>KhachSanModel.edmx</DependentUpon>
+      <LastGenOutput>KhachSanModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="KhachSanViewModel.tt">
+    <Content Include="KhachSanModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>KhachSanViewModel.edmx</DependentUpon>
-      <LastGenOutput>KhachSanViewModel.cs</LastGenOutput>
+      <DependentUpon>KhachSanModel.edmx</DependentUpon>
+      <LastGenOutput>KhachSanModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

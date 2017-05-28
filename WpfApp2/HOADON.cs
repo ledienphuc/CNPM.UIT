@@ -20,7 +20,7 @@ namespace WpfApp2
             this.CTHDs = new HashSet<CTHD>();
         }
     
-        public int MAHD { get; set; }
+        public string MAHD { get; set; }
         public string DIACHI { get; set; }
         public string TRIGIA { get; set; }
         public Nullable<int> SOLUONGKHACH { get; set; }
