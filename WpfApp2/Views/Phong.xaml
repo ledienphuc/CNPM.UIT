@@ -86,8 +86,8 @@
         <Button Content="Button" Command="{Binding ShowWindow}" Grid.Column="1" HorizontalAlignment="Left" Margin="144,44,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Grid.RowSpan="2"/>
         <Button Content="them" Grid.Column="1" HorizontalAlignment="Left" Margin="65,72,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75"/>
         <Button Content="xoa" Grid.Column="1" HorizontalAlignment="Left" Margin="194,72,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75"/>
-        <TextBox Height="23" Margin="29,113,10,0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding SelectedItem.TenPhong, ElementName=lvPhong}" VerticalAlignment="Top"  />
-        <TextBlock HorizontalAlignment="Left" Margin="56,155,0,0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding SelectedItem.DonGia, ElementName=lvPhong}" VerticalAlignment="Top"/>
+        <TextBox x:Name="txbTenPhong" Height="23" Margin="29,113,10,0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding SelectedItem.TenPhong, ElementName=lvPhong}" VerticalAlignment="Top" TextChanged="TextBox_TextChanged"  />
+        <TextBlock x:Name="txblDonGia" HorizontalAlignment="Left" Margin="56,155,0,0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding SelectedItem.DonGia, ElementName=lvPhong}" VerticalAlignment="Top"/>
 
 
 

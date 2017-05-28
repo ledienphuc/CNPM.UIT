@@ -29,6 +29,12 @@ namespace WpfApp2.Views
             
         }
 
-
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if(txbTenPhong.Text == "A")
+            {
+                txblDonGia.Text = "2222";
+            }
+        }
     }
 }
