@@ -74,3 +74,5 @@ C:\Users\DasupermAn\Documents\GitHub\CNPM.UIT\WpfApp2\obj\Debug\WpfApp2.Properti
 C:\Users\DasupermAn\Documents\GitHub\CNPM.UIT\WpfApp2\obj\Debug\WpfApp2.csproj.GenerateResource.Cache
 C:\Users\DasupermAn\Documents\GitHub\CNPM.UIT\WpfApp2\obj\Debug\WpfApp2.exe
 C:\Users\DasupermAn\Documents\GitHub\CNPM.UIT\WpfApp2\obj\Debug\WpfApp2.pdb
+C:\Users\DasupermAn\Documents\GitHub\CNPM.UIT\WpfApp2\obj\Debug\Views\DatPhong.g.cs
+C:\Users\DasupermAn\Documents\GitHub\CNPM.UIT\WpfApp2\obj\Debug\Views\DatPhong.baml
