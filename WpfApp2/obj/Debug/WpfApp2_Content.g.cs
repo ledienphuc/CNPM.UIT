@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("khachsanviewmodel.context.tt")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("khachsanviewmodel.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("khachsanmodel.context.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("khachsanmodel.tt")]
 
 

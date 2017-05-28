@@ -15,7 +15,7 @@ namespace WpfApp2.ViewModels
         private async void LoadData()
         {
              ObservableCollection<PhongViewModel> _danhSachPhong = new ObservableCollection<PhongViewModel>();
-            using (var db = new QUANLYDATPHONGEntities())
+            using (var db = new KhachSanContext())
             {
                 var danhMucPhong = await (from p in db.PHONGs
                                           join lp in db.LOAIPHONGs on p.MALOAIPHONG equals lp.MALOAIPHONG

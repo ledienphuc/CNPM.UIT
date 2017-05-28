@@ -14,9 +14,9 @@ namespace WpfApp2
     
     public partial class CTPT
     {
-        public int MACTPT { get; set; }
-        public Nullable<int> MAKHACHHANG { get; set; }
-        public int MAPHIEUTHUE { get; set; }
+        public string MACTPT { get; set; }
+        public string MAKHACHHANG { get; set; }
+        public string MAPHIEUTHUE { get; set; }
     
         public virtual KHACHHANG KHACHHANG { get; set; }
         public virtual PHIEUTHUE PHIEUTHUE { get; set; }
