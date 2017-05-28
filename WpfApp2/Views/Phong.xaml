@@ -25,7 +25,7 @@
         <ListView ItemsSource="{Binding DanhMucPhong}" Margin="25,52,0,64" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" HorizontalAlignment="Stretch"   >
             <ListView.View>
                 <GridView>
-                    <GridViewColumn  Width="auto" >
+                    <GridViewColumn Header="TenPhong"  Width="auto" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel>
@@ -33,7 +33,7 @@
                                 </StackPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
-                
+
                     </GridViewColumn>
 
                     <GridViewColumn Header="LoaiPhong" Width="100" >
@@ -78,7 +78,14 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Button" Command="{Binding ShowWindow}" Grid.Column="1" HorizontalAlignment="Left" Margin="183,39,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Button" Command="{Binding ShowWindow}" Grid.Column="1" HorizontalAlignment="Left" Margin="144,44,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Grid.RowSpan="2"/>
+        <Button Content="them" Grid.Column="1" HorizontalAlignment="Left" Margin="65,72,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75"/>
+        <Button Content="xoa" Grid.Column="1" HorizontalAlignment="Left" Margin="194,72,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75"/>
+        <Grid Height="362" Margin="10,10,8,0" Grid.Row="2" Grid.RowSpan="2" VerticalAlignment="Top" DataContext="{Binding DanhMucPhong}">
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="10,179,0,0" TextWrapping="Wrap" Text="{Binding TenPhong}" VerticalAlignment="Top" Width="120"/>
+        </Grid>
+
+
 
     </Grid>
 

@@ -437,7 +437,7 @@ warning 6013: The table/view 'QUANLYDATPHONG.dbo.QUYDINHSOKHACH' does not have a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="QUANLYDATPHONGEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="KhachSanContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CTHDs" EntityType="Self.CTHD" />
           <EntitySet Name="CTPTs" EntityType="Self.CTPT" />
           <EntitySet Name="HOADONs" EntityType="Self.HOADON" />
@@ -485,7 +485,7 @@ warning 6013: The table/view 'QUANLYDATPHONG.dbo.QUYDINHSOKHACH' does not have a
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="QUANLYDATPHONGModelStoreContainer" CdmEntityContainer="QUANLYDATPHONGEntities">
+        <EntityContainerMapping StorageEntityContainer="QUANLYDATPHONGModelStoreContainer" CdmEntityContainer="KhachSanContext">
           <EntitySetMapping Name="CTHDs">
             <EntityTypeMapping TypeName="QUANLYDATPHONGModel.CTHD">
               <MappingFragment StoreEntitySet="CTHD">

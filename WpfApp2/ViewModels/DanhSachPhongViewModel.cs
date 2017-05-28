@@ -11,11 +11,23 @@ namespace WpfApp2.ViewModels
 {
     class DanhSachPhongViewModel : ViewModelBase
     {
+
+        private PHONG selectedPhong;
+        public PHONG SelectedPhong
+        {
+            get { return selectedPhong; }
+            set
+            {
+                selectedPhong = value;
+                RaisePropertyChanged("SelectedPhong");
+            }
+        }
+
         public ObservableCollection<PhongViewModel> DanhMucPhong { get; set; }
         private async void LoadData()
         {
              ObservableCollection<PhongViewModel> _danhSachPhong = new ObservableCollection<PhongViewModel>();
-            using (var db = new QUANLYDATPHONGEntities())
+            using (var db = new KhachSanContext())
             {
                 var danhMucPhong = await (from p in db.PHONGs
                                           join lp in db.LOAIPHONGs on p.MALOAIPHONG equals lp.MALOAIPHONG
@@ -28,6 +40,7 @@ namespace WpfApp2.ViewModels
                 }
                 DanhMucPhong = _danhSachPhong;
                 RaisePropertyChanged("DanhMucPhong");
+              
             }
 
         }
@@ -37,6 +50,8 @@ namespace WpfApp2.ViewModels
             LoadData();
 
         }
+
+
     }
            
 }
