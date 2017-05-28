@@ -21,10 +21,10 @@
             <RowDefinition Height="114"/>
         </Grid.RowDefinitions>
         <Button Content="Trang chủ" HorizontalAlignment="Left" VerticalAlignment="Center" Width="75" HorizontalContentAlignment="Center" Height="20" Margin="0,29"/>
-        <Button Content="Phòng" Command="{Binding FirstViewCommand}" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Width="75" Height="20" Margin="0,29"/>
+        <Button Content="Phòng" Command="{Binding DatPhongViewCommand}" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Width="75" Height="20" Margin="0,29"/>
         <Button Content="Báo cáo" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Center" Width="75" Height="20" Margin="0,30,0,28"/>
         <Button Content="Chỉnh sửa" HorizontalAlignment="Left" Grid.Row="4" VerticalAlignment="Center" Width="75" Height="20" Margin="0,33,0,25"/>
-        <Button Content="Danh Mục" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Center" Width="75" Height="20" Margin="0,31,0,27"/>
+        <Button Content="Danh Mục" Command="{Binding DanhSachPhongViewCommand}" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Center" Width="75" Height="20" Margin="0,31,0,27"/>
         <Button Content="Thoát" Grid.Row="5" Width="75" HorizontalAlignment="Left" VerticalAlignment="Center" Height="20" Margin="0,60,0,34"/>
         <ContentControl  Content="{Binding CurrentViewModel}" Grid.Column="1" VerticalAlignment="Top" Height="504" Grid.RowSpan="6" Grid.ColumnSpan="2"/>
 
