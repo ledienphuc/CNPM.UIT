@@ -4,6 +4,7 @@
     <Key>
       <PropertyRef Name="MACTHD" />
     </Key>
+<<<<<<< HEAD
     <Property Name="MACTHD" Type="Int32" Nullable="false" />
     <Property Name="MAHD" Type="Int32" Nullable="false" />
     <Property Name="MAPHONG" Type="Int32" Nullable="false" />
@@ -11,31 +12,57 @@
     <Property Name="THANHTIEN" Type="Int32" Nullable="false" />
     <NavigationProperty Name="HOADON" Relationship="Self.FK__CTHD__MAHD__267ABA7A" FromRole="CTHD" ToRole="HOADON" />
     <NavigationProperty Name="PHONG" Relationship="Self.FK__CTHD__MAPHONG__276EDEB3" FromRole="CTHD" ToRole="PHONG" />
+=======
+    <Property Name="MACTHD" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MAHD" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MAPHONG" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SONGAYTHUE" Type="Int32" Nullable="false" />
+    <Property Name="THANHTIEN" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="HOADON" Relationship="Self.FK__CTHD__MAHD__398D8EEE" FromRole="CTHD" ToRole="HOADON" />
+    <NavigationProperty Name="PHONG" Relationship="Self.FK__CTHD__MAPHONG__3A81B327" FromRole="CTHD" ToRole="PHONG" />
+>>>>>>> 47ba6c0683f8bafd31ca709822f43876ed1a49c1
   </EntityType>
   <EntityType Name="CTPT">
     <Key>
       <PropertyRef Name="MACTPT" />
     </Key>
+<<<<<<< HEAD
     <Property Name="MACTPT" Type="Int32" Nullable="false" />
     <Property Name="MAKHACHHANG" Type="Int32" />
     <Property Name="MAPHIEUTHUE" Type="Int32" Nullable="false" />
     <NavigationProperty Name="KHACHHANG" Relationship="Self.FK__CTPT__MAKHACHHAN__1BFD2C07" FromRole="CTPT" ToRole="KHACHHANG" />
     <NavigationProperty Name="PHIEUTHUE" Relationship="Self.FK__CTPT__MAPHIEUTHU__1CF15040" FromRole="CTPT" ToRole="PHIEUTHUE" />
+=======
+    <Property Name="MACTPT" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MAKHACHHANG" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="MAPHIEUTHUE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="KHACHHANG" Relationship="Self.FK__CTPT__MAKHACHHAN__2F10007B" FromRole="CTPT" ToRole="KHACHHANG" />
+    <NavigationProperty Name="PHIEUTHUE" Relationship="Self.FK__CTPT__MAPHIEUTHU__300424B4" FromRole="CTPT" ToRole="PHIEUTHUE" />
+>>>>>>> 47ba6c0683f8bafd31ca709822f43876ed1a49c1
   </EntityType>
   <EntityType Name="HOADON">
     <Key>
       <PropertyRef Name="MAHD" />
     </Key>
+<<<<<<< HEAD
     <Property Name="MAHD" Type="Int32" Nullable="false" />
     <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="TRIGIA" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
     <Property Name="SOLUONGKHACH" Type="Int32" />
     <NavigationProperty Name="CTHDs" Relationship="Self.FK__CTHD__MAHD__267ABA7A" FromRole="HOADON" ToRole="CTHD" />
+=======
+    <Property Name="MAHD" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TRIGIA" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="SOLUONGKHACH" Type="Int32" />
+    <NavigationProperty Name="CTHDs" Relationship="Self.FK__CTHD__MAHD__398D8EEE" FromRole="HOADON" ToRole="CTHD" />
+>>>>>>> 47ba6c0683f8bafd31ca709822f43876ed1a49c1
   </EntityType>
   <EntityType Name="KHACHHANG">
     <Key>
       <PropertyRef Name="MAKHACHHANG" />
     </Key>
+<<<<<<< HEAD
     <Property Name="MAKHACHHANG" Type="Int32" Nullable="false" />
     <Property Name="MALOAIKHACH" Type="Int32" Nullable="false" />
     <Property Name="CMND" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
@@ -44,39 +71,72 @@
     <NavigationProperty Name="CTPTs" Relationship="Self.FK__CTPT__MAKHACHHAN__1BFD2C07" FromRole="KHACHHANG" ToRole="CTPT" />
     <NavigationProperty Name="LOAIKHACH" Relationship="Self.FK__KHACHHANG__MALOA__2F10007B" FromRole="KHACHHANG" ToRole="LOAIKHACH" />
     <NavigationProperty Name="PHONG" Relationship="Self.FK__KHACHHANG__MAPHO__1273C1CD" FromRole="KHACHHANG" ToRole="PHONG" />
+=======
+    <Property Name="MAKHACHHANG" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MALOAIKHACH" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CMND" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MAPHONG" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CTPTs" Relationship="Self.FK__CTPT__MAKHACHHAN__2F10007B" FromRole="KHACHHANG" ToRole="CTPT" />
+    <NavigationProperty Name="LOAIKHACH" Relationship="Self.FK__KHACHHANG__MALOA__4222D4EF" FromRole="KHACHHANG" ToRole="LOAIKHACH" />
+    <NavigationProperty Name="PHONG" Relationship="Self.FK__KHACHHANG__MAPHO__25869641" FromRole="KHACHHANG" ToRole="PHONG" />
+>>>>>>> 47ba6c0683f8bafd31ca709822f43876ed1a49c1
   </EntityType>
   <EntityType Name="LOAIKHACH">
     <Key>
       <PropertyRef Name="MALOAIKHACH" />
     </Key>
+<<<<<<< HEAD
     <Property Name="MALOAIKHACH" Type="Int32" Nullable="false" />
     <Property Name="TENLOAIKHACH" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="KHACHHANGs" Relationship="Self.FK__KHACHHANG__MALOA__2F10007B" FromRole="LOAIKHACH" ToRole="KHACHHANG" />
+=======
+    <Property Name="MALOAIKHACH" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TENLOAIKHACH" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="KHACHHANGs" Relationship="Self.FK__KHACHHANG__MALOA__4222D4EF" FromRole="LOAIKHACH" ToRole="KHACHHANG" />
+>>>>>>> 47ba6c0683f8bafd31ca709822f43876ed1a49c1
   </EntityType>
   <EntityType Name="LOAIPHONG">
     <Key>
       <PropertyRef Name="MALOAIPHONG" />
     </Key>
+<<<<<<< HEAD
     <Property Name="MALOAIPHONG" Type="Int32" Nullable="false" />
     <Property Name="TENLOAIPHONG" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="DONGIA" Type="Int32" Nullable="false" />
     <NavigationProperty Name="PHONG" Relationship="Self.FK__PHONG__MAPHONG__2E1BDC42" FromRole="LOAIPHONG" ToRole="PHONG" />
+=======
+    <Property Name="MALOAIPHONG" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TENLOAIPHONG" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DONGIA" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PHONG" Relationship="Self.FK__PHONG__MAPHONG__412EB0B6" FromRole="LOAIPHONG" ToRole="PHONG" />
+>>>>>>> 47ba6c0683f8bafd31ca709822f43876ed1a49c1
   </EntityType>
   <EntityType Name="PHIEUTHUE">
     <Key>
       <PropertyRef Name="MAPHIEUTHUE" />
     </Key>
+<<<<<<< HEAD
     <Property Name="MAPHIEUTHUE" Type="Int32" Nullable="false" />
     <Property Name="MAPHONG" Type="Int32" Nullable="false" />
     <Property Name="NGAYTHUE" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="SOLUONGKHACH" Type="Int32" />
     <NavigationProperty Name="CTPTs" Relationship="Self.FK__CTPT__MAPHIEUTHU__1CF15040" FromRole="PHIEUTHUE" ToRole="CTPT" />
     <NavigationProperty Name="PHONG" Relationship="Self.FK__PHIEUTHUE__MAPHO__182C9B23" FromRole="PHIEUTHUE" ToRole="PHONG" />
+=======
+    <Property Name="MAPHIEUTHUE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MAPHONG" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NGAYTHUE" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="SOLUONGKHACH" Type="Int32" />
+    <NavigationProperty Name="CTPTs" Relationship="Self.FK__CTPT__MAPHIEUTHU__300424B4" FromRole="PHIEUTHUE" ToRole="CTPT" />
+    <NavigationProperty Name="PHONG" Relationship="Self.FK__PHIEUTHUE__MAPHO__2B3F6F97" FromRole="PHIEUTHUE" ToRole="PHONG" />
+>>>>>>> 47ba6c0683f8bafd31ca709822f43876ed1a49c1
   </EntityType>
   <EntityType Name="PHONG">
     <Key>
       <PropertyRef Name="MAPHONG" />
     </Key>
+<<<<<<< HEAD
     <Property Name="MAPHONG" Type="Int32" Nullable="false" />
     <Property Name="TENPHONG" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="MALOAIPHONG" Type="Int32" Nullable="false" />
@@ -86,6 +146,17 @@
     <NavigationProperty Name="KHACHHANGs" Relationship="Self.FK__KHACHHANG__MAPHO__1273C1CD" FromRole="PHONG" ToRole="KHACHHANG" />
     <NavigationProperty Name="LOAIPHONG" Relationship="Self.FK__PHONG__MAPHONG__2E1BDC42" FromRole="PHONG" ToRole="LOAIPHONG" />
     <NavigationProperty Name="PHIEUTHUEs" Relationship="Self.FK__PHIEUTHUE__MAPHO__182C9B23" FromRole="PHONG" ToRole="PHIEUTHUE" />
+=======
+    <Property Name="MAPHONG" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TENPHONG" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MALOAIPHONG" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GHICHU" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TINHTRANG" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CTHDs" Relationship="Self.FK__CTHD__MAPHONG__3A81B327" FromRole="PHONG" ToRole="CTHD" />
+    <NavigationProperty Name="KHACHHANGs" Relationship="Self.FK__KHACHHANG__MAPHO__25869641" FromRole="PHONG" ToRole="KHACHHANG" />
+    <NavigationProperty Name="LOAIPHONG" Relationship="Self.FK__PHONG__MAPHONG__412EB0B6" FromRole="PHONG" ToRole="LOAIPHONG" />
+    <NavigationProperty Name="PHIEUTHUEs" Relationship="Self.FK__PHIEUTHUE__MAPHO__2B3F6F97" FromRole="PHONG" ToRole="PHIEUTHUE" />
+>>>>>>> 47ba6c0683f8bafd31ca709822f43876ed1a49c1
   </EntityType>
   <EntityType Name="BAOCAO">
     <Key>
@@ -97,7 +168,11 @@
     <Property Name="DOANHTHU" Type="Int32" />
     <Property Name="TYLE" Type="Double" />
   </EntityType>
+<<<<<<< HEAD
   <Association Name="FK__CTHD__MAHD__267ABA7A">
+=======
+  <Association Name="FK__CTHD__MAHD__398D8EEE">
+>>>>>>> 47ba6c0683f8bafd31ca709822f43876ed1a49c1
     <End Role="HOADON" Type="Self.HOADON" Multiplicity="1" />
     <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
     <ReferentialConstraint>
@@ -109,7 +184,11 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+<<<<<<< HEAD
   <Association Name="FK__CTHD__MAPHONG__276EDEB3">
+=======
+  <Association Name="FK__CTHD__MAPHONG__3A81B327">
+>>>>>>> 47ba6c0683f8bafd31ca709822f43876ed1a49c1
     <End Role="PHONG" Type="Self.PHONG" Multiplicity="1" />
     <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
     <ReferentialConstraint>
@@ -121,7 +200,11 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+<<<<<<< HEAD
   <Association Name="FK__CTPT__MAKHACHHAN__1BFD2C07">
+=======
+  <Association Name="FK__CTPT__MAKHACHHAN__2F10007B">
+>>>>>>> 47ba6c0683f8bafd31ca709822f43876ed1a49c1
     <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
     <End Role="CTPT" Type="Self.CTPT" Multiplicity="*" />
     <ReferentialConstraint>
@@ -133,7 +216,11 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+<<<<<<< HEAD
   <Association Name="FK__CTPT__MAPHIEUTHU__1CF15040">
+=======
+  <Association Name="FK__CTPT__MAPHIEUTHU__300424B4">
+>>>>>>> 47ba6c0683f8bafd31ca709822f43876ed1a49c1
     <End Role="PHIEUTHUE" Type="Self.PHIEUTHUE" Multiplicity="1" />
     <End Role="CTPT" Type="Self.CTPT" Multiplicity="*" />
     <ReferentialConstraint>
@@ -145,7 +232,11 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+<<<<<<< HEAD
   <Association Name="FK__KHACHHANG__MALOA__2F10007B">
+=======
+  <Association Name="FK__KHACHHANG__MALOA__4222D4EF">
+>>>>>>> 47ba6c0683f8bafd31ca709822f43876ed1a49c1
     <End Role="LOAIKHACH" Type="Self.LOAIKHACH" Multiplicity="1" />
     <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="*" />
     <ReferentialConstraint>
@@ -157,7 +248,11 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+<<<<<<< HEAD
   <Association Name="FK__KHACHHANG__MAPHO__1273C1CD">
+=======
+  <Association Name="FK__KHACHHANG__MAPHO__25869641">
+>>>>>>> 47ba6c0683f8bafd31ca709822f43876ed1a49c1
     <End Role="PHONG" Type="Self.PHONG" Multiplicity="0..1" />
     <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="*" />
     <ReferentialConstraint>
@@ -169,7 +264,11 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+<<<<<<< HEAD
   <Association Name="FK__PHONG__MAPHONG__2E1BDC42">
+=======
+  <Association Name="FK__PHONG__MAPHONG__412EB0B6">
+>>>>>>> 47ba6c0683f8bafd31ca709822f43876ed1a49c1
     <End Role="LOAIPHONG" Type="Self.LOAIPHONG" Multiplicity="1" />
     <End Role="PHONG" Type="Self.PHONG" Multiplicity="0..1" />
     <ReferentialConstraint>
@@ -181,7 +280,11 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+<<<<<<< HEAD
   <Association Name="FK__PHIEUTHUE__MAPHO__182C9B23">
+=======
+  <Association Name="FK__PHIEUTHUE__MAPHO__2B3F6F97">
+>>>>>>> 47ba6c0683f8bafd31ca709822f43876ed1a49c1
     <End Role="PHONG" Type="Self.PHONG" Multiplicity="1" />
     <End Role="PHIEUTHUE" Type="Self.PHIEUTHUE" Multiplicity="*" />
     <ReferentialConstraint>
@@ -203,6 +306,7 @@
     <EntitySet Name="PHIEUTHUEs" EntityType="Self.PHIEUTHUE" />
     <EntitySet Name="PHONGs" EntityType="Self.PHONG" />
     <EntitySet Name="BAOCAOs" EntityType="Self.BAOCAO" />
+<<<<<<< HEAD
     <AssociationSet Name="FK__CTHD__MAHD__267ABA7A" Association="Self.FK__CTHD__MAHD__267ABA7A">
       <End Role="HOADON" EntitySet="HOADONs" />
       <End Role="CTHD" EntitySet="CTHDs" />
@@ -232,6 +336,37 @@
       <End Role="PHONG" EntitySet="PHONGs" />
     </AssociationSet>
     <AssociationSet Name="FK__PHIEUTHUE__MAPHO__182C9B23" Association="Self.FK__PHIEUTHUE__MAPHO__182C9B23">
+=======
+    <AssociationSet Name="FK__CTHD__MAHD__398D8EEE" Association="Self.FK__CTHD__MAHD__398D8EEE">
+      <End Role="HOADON" EntitySet="HOADONs" />
+      <End Role="CTHD" EntitySet="CTHDs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CTHD__MAPHONG__3A81B327" Association="Self.FK__CTHD__MAPHONG__3A81B327">
+      <End Role="PHONG" EntitySet="PHONGs" />
+      <End Role="CTHD" EntitySet="CTHDs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CTPT__MAKHACHHAN__2F10007B" Association="Self.FK__CTPT__MAKHACHHAN__2F10007B">
+      <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+      <End Role="CTPT" EntitySet="CTPTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CTPT__MAPHIEUTHU__300424B4" Association="Self.FK__CTPT__MAPHIEUTHU__300424B4">
+      <End Role="PHIEUTHUE" EntitySet="PHIEUTHUEs" />
+      <End Role="CTPT" EntitySet="CTPTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__KHACHHANG__MALOA__4222D4EF" Association="Self.FK__KHACHHANG__MALOA__4222D4EF">
+      <End Role="LOAIKHACH" EntitySet="LOAIKHACHes" />
+      <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__KHACHHANG__MAPHO__25869641" Association="Self.FK__KHACHHANG__MAPHO__25869641">
+      <End Role="PHONG" EntitySet="PHONGs" />
+      <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PHONG__MAPHONG__412EB0B6" Association="Self.FK__PHONG__MAPHONG__412EB0B6">
+      <End Role="LOAIPHONG" EntitySet="LOAIPHONGs" />
+      <End Role="PHONG" EntitySet="PHONGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PHIEUTHUE__MAPHO__2B3F6F97" Association="Self.FK__PHIEUTHUE__MAPHO__2B3F6F97">
+>>>>>>> 47ba6c0683f8bafd31ca709822f43876ed1a49c1
       <End Role="PHONG" EntitySet="PHONGs" />
       <End Role="PHIEUTHUE" EntitySet="PHIEUTHUEs" />
     </AssociationSet>

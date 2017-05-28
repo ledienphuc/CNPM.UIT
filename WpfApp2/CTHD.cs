@@ -14,9 +14,9 @@ namespace WpfApp2
     
     public partial class CTHD
     {
-        public int MACTHD { get; set; }
-        public int MAHD { get; set; }
-        public int MAPHONG { get; set; }
+        public string MACTHD { get; set; }
+        public string MAHD { get; set; }
+        public string MAPHONG { get; set; }
         public int SONGAYTHUE { get; set; }
         public int THANHTIEN { get; set; }
     

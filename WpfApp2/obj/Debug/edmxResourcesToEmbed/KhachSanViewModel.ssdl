@@ -16,9 +16,9 @@ warning 6002: The table/view 'QUANLYDATPHONG.dbo.BAOCAO' does not have a primary
     <Key>
       <PropertyRef Name="MACTHD" />
     </Key>
-    <Property Name="MACTHD" Type="int" Nullable="false" />
-    <Property Name="MAHD" Type="int" Nullable="false" />
-    <Property Name="MAPHONG" Type="int" Nullable="false" />
+    <Property Name="MACTHD" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="MAHD" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="MAPHONG" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="SONGAYTHUE" Type="int" Nullable="false" />
     <Property Name="THANHTIEN" Type="int" Nullable="false" />
   </EntityType>
@@ -26,15 +26,15 @@ warning 6002: The table/view 'QUANLYDATPHONG.dbo.BAOCAO' does not have a primary
     <Key>
       <PropertyRef Name="MACTPT" />
     </Key>
-    <Property Name="MACTPT" Type="int" Nullable="false" />
-    <Property Name="MAKHACHHANG" Type="int" />
-    <Property Name="MAPHIEUTHUE" Type="int" Nullable="false" />
+    <Property Name="MACTPT" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="MAKHACHHANG" Type="nvarchar" MaxLength="10" />
+    <Property Name="MAPHIEUTHUE" Type="nvarchar" MaxLength="10" Nullable="false" />
   </EntityType>
   <EntityType Name="HOADON">
     <Key>
       <PropertyRef Name="MAHD" />
     </Key>
-    <Property Name="MAHD" Type="int" Nullable="false" />
+    <Property Name="MAHD" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="DIACHI" Type="nvarchar" MaxLength="100" />
     <Property Name="TRIGIA" Type="nvarchar" MaxLength="10" />
     <Property Name="SOLUONGKHACH" Type="int" />
@@ -43,24 +43,24 @@ warning 6002: The table/view 'QUANLYDATPHONG.dbo.BAOCAO' does not have a primary
     <Key>
       <PropertyRef Name="MAKHACHHANG" />
     </Key>
-    <Property Name="MAKHACHHANG" Type="int" Nullable="false" />
-    <Property Name="MALOAIKHACH" Type="int" Nullable="false" />
+    <Property Name="MAKHACHHANG" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="MALOAIKHACH" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="CMND" Type="char" MaxLength="11" Nullable="false" />
     <Property Name="DIACHI" Type="nvarchar" MaxLength="100" />
-    <Property Name="MAPHONG" Type="int" />
+    <Property Name="MAPHONG" Type="nvarchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="LOAIKHACH">
     <Key>
       <PropertyRef Name="MALOAIKHACH" />
     </Key>
-    <Property Name="MALOAIKHACH" Type="int" Nullable="false" />
+    <Property Name="MALOAIKHACH" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="TENLOAIKHACH" Type="nvarchar" MaxLength="10" Nullable="false" />
   </EntityType>
   <EntityType Name="LOAIPHONG">
     <Key>
       <PropertyRef Name="MALOAIPHONG" />
     </Key>
-    <Property Name="MALOAIPHONG" Type="int" Nullable="false" />
+    <Property Name="MALOAIPHONG" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="TENLOAIPHONG" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="DONGIA" Type="int" Nullable="false" />
   </EntityType>
@@ -68,8 +68,8 @@ warning 6002: The table/view 'QUANLYDATPHONG.dbo.BAOCAO' does not have a primary
     <Key>
       <PropertyRef Name="MAPHIEUTHUE" />
     </Key>
-    <Property Name="MAPHIEUTHUE" Type="int" Nullable="false" />
-    <Property Name="MAPHONG" Type="int" Nullable="false" />
+    <Property Name="MAPHIEUTHUE" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="MAPHONG" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="NGAYTHUE" Type="smalldatetime" Nullable="false" />
     <Property Name="SOLUONGKHACH" Type="int" />
   </EntityType>
@@ -77,18 +77,13 @@ warning 6002: The table/view 'QUANLYDATPHONG.dbo.BAOCAO' does not have a primary
     <Key>
       <PropertyRef Name="MAPHONG" />
     </Key>
-    <Property Name="MAPHONG" Type="int" Nullable="false" />
+    <Property Name="MAPHONG" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="TENPHONG" Type="nvarchar" MaxLength="10" Nullable="false" />
-    <Property Name="MALOAIPHONG" Type="int" Nullable="false" />
+    <Property Name="MALOAIPHONG" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="GHICHU" Type="nvarchar" MaxLength="100" />
     <Property Name="TINHTRANG" Type="nvarchar" MaxLength="10" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6013: The table/view 'QUANLYDATPHONG.dbo.QUYDINHSOKHACH' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="QUYDINHSOKHACH">
-          <Property Name="SOKHACHTOIDA" Type="int" />
-        </EntityType>-->
-  <Association Name="FK__CTHD__MAHD__267ABA7A">
+  <Association Name="FK__CTHD__MAHD__398D8EEE">
     <End Role="HOADON" Type="Self.HOADON" Multiplicity="1" />
     <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
     <ReferentialConstraint>
@@ -100,7 +95,7 @@ warning 6013: The table/view 'QUANLYDATPHONG.dbo.QUYDINHSOKHACH' does not have a
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__CTHD__MAPHONG__276EDEB3">
+  <Association Name="FK__CTHD__MAPHONG__3A81B327">
     <End Role="PHONG" Type="Self.PHONG" Multiplicity="1" />
     <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
     <ReferentialConstraint>
@@ -112,7 +107,7 @@ warning 6013: The table/view 'QUANLYDATPHONG.dbo.QUYDINHSOKHACH' does not have a
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__CTPT__MAKHACHHAN__1BFD2C07">
+  <Association Name="FK__CTPT__MAKHACHHAN__2F10007B">
     <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
     <End Role="CTPT" Type="Self.CTPT" Multiplicity="*" />
     <ReferentialConstraint>
@@ -124,7 +119,7 @@ warning 6013: The table/view 'QUANLYDATPHONG.dbo.QUYDINHSOKHACH' does not have a
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__CTPT__MAPHIEUTHU__1CF15040">
+  <Association Name="FK__CTPT__MAPHIEUTHU__300424B4">
     <End Role="PHIEUTHUE" Type="Self.PHIEUTHUE" Multiplicity="1" />
     <End Role="CTPT" Type="Self.CTPT" Multiplicity="*" />
     <ReferentialConstraint>
@@ -136,7 +131,7 @@ warning 6013: The table/view 'QUANLYDATPHONG.dbo.QUYDINHSOKHACH' does not have a
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__KHACHHANG__MALOA__2F10007B">
+  <Association Name="FK__KHACHHANG__MALOA__4222D4EF">
     <End Role="LOAIKHACH" Type="Self.LOAIKHACH" Multiplicity="1" />
     <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="*" />
     <ReferentialConstraint>
@@ -148,7 +143,7 @@ warning 6013: The table/view 'QUANLYDATPHONG.dbo.QUYDINHSOKHACH' does not have a
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__KHACHHANG__MAPHO__1273C1CD">
+  <Association Name="FK__KHACHHANG__MAPHO__25869641">
     <End Role="PHONG" Type="Self.PHONG" Multiplicity="0..1" />
     <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="*" />
     <ReferentialConstraint>
@@ -160,7 +155,7 @@ warning 6013: The table/view 'QUANLYDATPHONG.dbo.QUYDINHSOKHACH' does not have a
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__PHIEUTHUE__MAPHO__182C9B23">
+  <Association Name="FK__PHIEUTHUE__MAPHO__2B3F6F97">
     <End Role="PHONG" Type="Self.PHONG" Multiplicity="1" />
     <End Role="PHIEUTHUE" Type="Self.PHIEUTHUE" Multiplicity="*" />
     <ReferentialConstraint>
@@ -172,7 +167,7 @@ warning 6013: The table/view 'QUANLYDATPHONG.dbo.QUYDINHSOKHACH' does not have a
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__PHONG__MAPHONG__2E1BDC42">
+  <Association Name="FK__PHONG__MAPHONG__412EB0B6">
     <End Role="LOAIPHONG" Type="Self.LOAIPHONG" Multiplicity="1" />
     <End Role="PHONG" Type="Self.PHONG" Multiplicity="0..1" />
     <ReferentialConstraint>
@@ -201,35 +196,35 @@ warning 6013: The table/view 'QUANLYDATPHONG.dbo.QUYDINHSOKHACH' does not have a
     [BAOCAO].[TYLE] AS [TYLE]
     FROM [dbo].[BAOCAO] AS [BAOCAO]</DefiningQuery>
     </EntitySet>
-    <AssociationSet Name="FK__CTHD__MAHD__267ABA7A" Association="Self.FK__CTHD__MAHD__267ABA7A">
+    <AssociationSet Name="FK__CTHD__MAHD__398D8EEE" Association="Self.FK__CTHD__MAHD__398D8EEE">
       <End Role="HOADON" EntitySet="HOADON" />
       <End Role="CTHD" EntitySet="CTHD" />
     </AssociationSet>
-    <AssociationSet Name="FK__CTHD__MAPHONG__276EDEB3" Association="Self.FK__CTHD__MAPHONG__276EDEB3">
+    <AssociationSet Name="FK__CTHD__MAPHONG__3A81B327" Association="Self.FK__CTHD__MAPHONG__3A81B327">
       <End Role="PHONG" EntitySet="PHONG" />
       <End Role="CTHD" EntitySet="CTHD" />
     </AssociationSet>
-    <AssociationSet Name="FK__CTPT__MAKHACHHAN__1BFD2C07" Association="Self.FK__CTPT__MAKHACHHAN__1BFD2C07">
+    <AssociationSet Name="FK__CTPT__MAKHACHHAN__2F10007B" Association="Self.FK__CTPT__MAKHACHHAN__2F10007B">
       <End Role="KHACHHANG" EntitySet="KHACHHANG" />
       <End Role="CTPT" EntitySet="CTPT" />
     </AssociationSet>
-    <AssociationSet Name="FK__CTPT__MAPHIEUTHU__1CF15040" Association="Self.FK__CTPT__MAPHIEUTHU__1CF15040">
+    <AssociationSet Name="FK__CTPT__MAPHIEUTHU__300424B4" Association="Self.FK__CTPT__MAPHIEUTHU__300424B4">
       <End Role="PHIEUTHUE" EntitySet="PHIEUTHUE" />
       <End Role="CTPT" EntitySet="CTPT" />
     </AssociationSet>
-    <AssociationSet Name="FK__KHACHHANG__MALOA__2F10007B" Association="Self.FK__KHACHHANG__MALOA__2F10007B">
+    <AssociationSet Name="FK__KHACHHANG__MALOA__4222D4EF" Association="Self.FK__KHACHHANG__MALOA__4222D4EF">
       <End Role="LOAIKHACH" EntitySet="LOAIKHACH" />
       <End Role="KHACHHANG" EntitySet="KHACHHANG" />
     </AssociationSet>
-    <AssociationSet Name="FK__KHACHHANG__MAPHO__1273C1CD" Association="Self.FK__KHACHHANG__MAPHO__1273C1CD">
+    <AssociationSet Name="FK__KHACHHANG__MAPHO__25869641" Association="Self.FK__KHACHHANG__MAPHO__25869641">
       <End Role="PHONG" EntitySet="PHONG" />
       <End Role="KHACHHANG" EntitySet="KHACHHANG" />
     </AssociationSet>
-    <AssociationSet Name="FK__PHIEUTHUE__MAPHO__182C9B23" Association="Self.FK__PHIEUTHUE__MAPHO__182C9B23">
+    <AssociationSet Name="FK__PHIEUTHUE__MAPHO__2B3F6F97" Association="Self.FK__PHIEUTHUE__MAPHO__2B3F6F97">
       <End Role="PHONG" EntitySet="PHONG" />
       <End Role="PHIEUTHUE" EntitySet="PHIEUTHUE" />
     </AssociationSet>
-    <AssociationSet Name="FK__PHONG__MAPHONG__2E1BDC42" Association="Self.FK__PHONG__MAPHONG__2E1BDC42">
+    <AssociationSet Name="FK__PHONG__MAPHONG__412EB0B6" Association="Self.FK__PHONG__MAPHONG__412EB0B6">
       <End Role="LOAIPHONG" EntitySet="LOAIPHONG" />
       <End Role="PHONG" EntitySet="PHONG" />
     </AssociationSet>

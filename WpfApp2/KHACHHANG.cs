@@ -20,11 +20,11 @@ namespace WpfApp2
             this.CTPTs = new HashSet<CTPT>();
         }
     
-        public int MAKHACHHANG { get; set; }
-        public int MALOAIKHACH { get; set; }
+        public string MAKHACHHANG { get; set; }
+        public string MALOAIKHACH { get; set; }
         public string CMND { get; set; }
         public string DIACHI { get; set; }
-        public Nullable<int> MAPHONG { get; set; }
+        public string MAPHONG { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTPT> CTPTs { get; set; }

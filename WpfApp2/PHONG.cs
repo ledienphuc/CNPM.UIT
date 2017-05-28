@@ -22,9 +22,9 @@ namespace WpfApp2
             this.PHIEUTHUEs = new HashSet<PHIEUTHUE>();
         }
     
-        public int MAPHONG { get; set; }
+        public string MAPHONG { get; set; }
         public string TENPHONG { get; set; }
-        public int MALOAIPHONG { get; set; }
+        public string MALOAIPHONG { get; set; }
         public string GHICHU { get; set; }
         public string TINHTRANG { get; set; }
     
