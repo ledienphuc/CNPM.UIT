@@ -60,7 +60,7 @@
     <Property Name="MALOAIPHONG" Type="Int32" Nullable="false" />
     <Property Name="TENLOAIPHONG" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="DONGIA" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="PHONG" Relationship="Self.FK__PHONG__MAPHONG__2E1BDC42" FromRole="LOAIPHONG" ToRole="PHONG" />
+    <NavigationProperty Name="PHONGs" Relationship="QUANLYDATPHONGModel.FK__PHONG__MALOAIPHO__4316F928" FromRole="LOAIPHONG" ToRole="PHONG" />
   </EntityType>
   <EntityType Name="PHIEUTHUE">
     <Key>
@@ -84,8 +84,8 @@
     <Property Name="TINHTRANG" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="CTHDs" Relationship="Self.FK__CTHD__MAPHONG__276EDEB3" FromRole="PHONG" ToRole="CTHD" />
     <NavigationProperty Name="KHACHHANGs" Relationship="Self.FK__KHACHHANG__MAPHO__1273C1CD" FromRole="PHONG" ToRole="KHACHHANG" />
-    <NavigationProperty Name="LOAIPHONG" Relationship="Self.FK__PHONG__MAPHONG__2E1BDC42" FromRole="PHONG" ToRole="LOAIPHONG" />
     <NavigationProperty Name="PHIEUTHUEs" Relationship="Self.FK__PHIEUTHUE__MAPHO__182C9B23" FromRole="PHONG" ToRole="PHIEUTHUE" />
+    <NavigationProperty Name="LOAIPHONG1" Relationship="QUANLYDATPHONGModel.FK__PHONG__MALOAIPHO__4316F928" FromRole="PHONG" ToRole="LOAIPHONG" />
   </EntityType>
   <EntityType Name="BAOCAO">
     <Key>
@@ -169,18 +169,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__PHONG__MAPHONG__2E1BDC42">
-    <End Role="LOAIPHONG" Type="Self.LOAIPHONG" Multiplicity="1" />
-    <End Role="PHONG" Type="Self.PHONG" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="LOAIPHONG">
-        <PropertyRef Name="MALOAIPHONG" />
-      </Principal>
-      <Dependent Role="PHONG">
-        <PropertyRef Name="MAPHONG" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__PHIEUTHUE__MAPHO__182C9B23">
     <End Role="PHONG" Type="Self.PHONG" Multiplicity="1" />
     <End Role="PHIEUTHUE" Type="Self.PHIEUTHUE" Multiplicity="*" />
@@ -227,13 +215,25 @@
       <End Role="PHONG" EntitySet="PHONGs" />
       <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
     </AssociationSet>
-    <AssociationSet Name="FK__PHONG__MAPHONG__2E1BDC42" Association="Self.FK__PHONG__MAPHONG__2E1BDC42">
-      <End Role="LOAIPHONG" EntitySet="LOAIPHONGs" />
-      <End Role="PHONG" EntitySet="PHONGs" />
-    </AssociationSet>
     <AssociationSet Name="FK__PHIEUTHUE__MAPHO__182C9B23" Association="Self.FK__PHIEUTHUE__MAPHO__182C9B23">
       <End Role="PHONG" EntitySet="PHONGs" />
       <End Role="PHIEUTHUE" EntitySet="PHIEUTHUEs" />
     </AssociationSet>
+    <AssociationSet Name="FK__PHONG__MALOAIPHO__4316F928" Association="QUANLYDATPHONGModel.FK__PHONG__MALOAIPHO__4316F928">
+      <End Role="LOAIPHONG" EntitySet="LOAIPHONGs" />
+      <End Role="PHONG" EntitySet="PHONGs" />
+    </AssociationSet>
   </EntityContainer>
+  <Association Name="FK__PHONG__MALOAIPHO__4316F928">
+    <End Type="QUANLYDATPHONGModel.LOAIPHONG" Role="LOAIPHONG" Multiplicity="1" />
+    <End Type="QUANLYDATPHONGModel.PHONG" Role="PHONG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAIPHONG">
+        <PropertyRef Name="MALOAIPHONG" />
+      </Principal>
+      <Dependent Role="PHONG">
+        <PropertyRef Name="MALOAIPHONG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

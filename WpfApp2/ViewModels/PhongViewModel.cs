@@ -46,14 +46,14 @@ namespace WpfApp2.ViewModels
 
         public string LoaiPhong
         {
-            get { return _phong.LOAIPHONG.TENLOAIPHONG; }
-            set { _phong.LOAIPHONG.TENLOAIPHONG = value; RaisePropertyChanged("LoaiPhong"); }
+            get { return _phong.LOAIPHONG1.TENLOAIPHONG; }
+            set { _phong.LOAIPHONG1.TENLOAIPHONG = value; RaisePropertyChanged("LoaiPhong"); }
         }
 
         public Int32 DonGia
         {
-            get { return _phong.LOAIPHONG.DONGIA; }
-            set { _phong.LOAIPHONG.DONGIA = value; RaisePropertyChanged("DonGia"); }
+            get { return _phong.LOAIPHONG1.DONGIA; }
+            set { _phong.LOAIPHONG1.DONGIA = value; RaisePropertyChanged("DonGia"); }
         }
 
         public string TinhTrang

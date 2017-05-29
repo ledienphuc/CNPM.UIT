@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QUANLYDATPHONGModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="QUANLYDATPHONGModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
 warning 6002: The table/view 'QUANLYDATPHONG.dbo.BAOCAO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="BAOCAO">
@@ -88,11 +88,6 @@ warning 6002: The table/view 'QUANLYDATPHONG.dbo.BAOCAO' does not have a primary
           <Property Name="GHICHU" Type="nvarchar" MaxLength="100" />
           <Property Name="TINHTRANG" Type="nvarchar" MaxLength="10" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'QUANLYDATPHONG.dbo.QUYDINHSOKHACH' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="QUYDINHSOKHACH">
-          <Property Name="SOKHACHTOIDA" Type="int" />
-        </EntityType>-->
         <Association Name="FK__CTHD__MAHD__267ABA7A">
           <End Role="HOADON" Type="Self.HOADON" Multiplicity="1" />
           <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
@@ -177,15 +172,15 @@ warning 6013: The table/view 'QUANLYDATPHONG.dbo.QUYDINHSOKHACH' does not have a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PHONG__MAPHONG__2E1BDC42">
+        <Association Name="FK__PHONG__MALOAIPHO__4316F928">
           <End Role="LOAIPHONG" Type="Self.LOAIPHONG" Multiplicity="1" />
-          <End Role="PHONG" Type="Self.PHONG" Multiplicity="0..1" />
+          <End Role="PHONG" Type="Self.PHONG" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="LOAIPHONG">
               <PropertyRef Name="MALOAIPHONG" />
             </Principal>
             <Dependent Role="PHONG">
-              <PropertyRef Name="MAPHONG" />
+              <PropertyRef Name="MALOAIPHONG" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -234,13 +229,12 @@ warning 6013: The table/view 'QUANLYDATPHONG.dbo.QUYDINHSOKHACH' does not have a
             <End Role="PHONG" EntitySet="PHONG" />
             <End Role="PHIEUTHUE" EntitySet="PHIEUTHUE" />
           </AssociationSet>
-          <AssociationSet Name="FK__PHONG__MAPHONG__2E1BDC42" Association="Self.FK__PHONG__MAPHONG__2E1BDC42">
+          <AssociationSet Name="FK__PHONG__MALOAIPHO__4316F928" Association="Self.FK__PHONG__MALOAIPHO__4316F928">
             <End Role="LOAIPHONG" EntitySet="LOAIPHONG" />
             <End Role="PHONG" EntitySet="PHONG" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QUANLYDATPHONGModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -304,7 +298,7 @@ warning 6013: The table/view 'QUANLYDATPHONG.dbo.QUYDINHSOKHACH' does not have a
           <Property Name="MALOAIPHONG" Type="Int32" Nullable="false" />
           <Property Name="TENLOAIPHONG" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DONGIA" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="PHONG" Relationship="Self.FK__PHONG__MAPHONG__2E1BDC42" FromRole="LOAIPHONG" ToRole="PHONG" />
+          <NavigationProperty Name="PHONGs" Relationship="QUANLYDATPHONGModel.FK__PHONG__MALOAIPHO__4316F928" FromRole="LOAIPHONG" ToRole="PHONG" />
         </EntityType>
         <EntityType Name="PHIEUTHUE">
           <Key>
@@ -328,8 +322,8 @@ warning 6013: The table/view 'QUANLYDATPHONG.dbo.QUYDINHSOKHACH' does not have a
           <Property Name="TINHTRANG" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CTHDs" Relationship="Self.FK__CTHD__MAPHONG__276EDEB3" FromRole="PHONG" ToRole="CTHD" />
           <NavigationProperty Name="KHACHHANGs" Relationship="Self.FK__KHACHHANG__MAPHO__1273C1CD" FromRole="PHONG" ToRole="KHACHHANG" />
-          <NavigationProperty Name="LOAIPHONG" Relationship="Self.FK__PHONG__MAPHONG__2E1BDC42" FromRole="PHONG" ToRole="LOAIPHONG" />
           <NavigationProperty Name="PHIEUTHUEs" Relationship="Self.FK__PHIEUTHUE__MAPHO__182C9B23" FromRole="PHONG" ToRole="PHIEUTHUE" />
+          <NavigationProperty Name="LOAIPHONG1" Relationship="QUANLYDATPHONGModel.FK__PHONG__MALOAIPHO__4316F928" FromRole="PHONG" ToRole="LOAIPHONG" />
         </EntityType>
         <EntityType Name="BAOCAO">
           <Key>
@@ -413,18 +407,6 @@ warning 6013: The table/view 'QUANLYDATPHONG.dbo.QUYDINHSOKHACH' does not have a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PHONG__MAPHONG__2E1BDC42">
-          <End Role="LOAIPHONG" Type="Self.LOAIPHONG" Multiplicity="1" />
-          <End Role="PHONG" Type="Self.PHONG" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="LOAIPHONG">
-              <PropertyRef Name="MALOAIPHONG" />
-            </Principal>
-            <Dependent Role="PHONG">
-              <PropertyRef Name="MAPHONG" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__PHIEUTHUE__MAPHO__182C9B23">
           <End Role="PHONG" Type="Self.PHONG" Multiplicity="1" />
           <End Role="PHIEUTHUE" Type="Self.PHIEUTHUE" Multiplicity="*" />
@@ -471,15 +453,27 @@ warning 6013: The table/view 'QUANLYDATPHONG.dbo.QUYDINHSOKHACH' does not have a
             <End Role="PHONG" EntitySet="PHONGs" />
             <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
           </AssociationSet>
-          <AssociationSet Name="FK__PHONG__MAPHONG__2E1BDC42" Association="Self.FK__PHONG__MAPHONG__2E1BDC42">
-            <End Role="LOAIPHONG" EntitySet="LOAIPHONGs" />
-            <End Role="PHONG" EntitySet="PHONGs" />
-          </AssociationSet>
           <AssociationSet Name="FK__PHIEUTHUE__MAPHO__182C9B23" Association="Self.FK__PHIEUTHUE__MAPHO__182C9B23">
             <End Role="PHONG" EntitySet="PHONGs" />
             <End Role="PHIEUTHUE" EntitySet="PHIEUTHUEs" />
           </AssociationSet>
+          <AssociationSet Name="FK__PHONG__MALOAIPHO__4316F928" Association="QUANLYDATPHONGModel.FK__PHONG__MALOAIPHO__4316F928">
+            <End Role="LOAIPHONG" EntitySet="LOAIPHONGs" />
+            <End Role="PHONG" EntitySet="PHONGs" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK__PHONG__MALOAIPHO__4316F928">
+          <End Type="QUANLYDATPHONGModel.LOAIPHONG" Role="LOAIPHONG" Multiplicity="1" />
+          <End Type="QUANLYDATPHONGModel.PHONG" Role="PHONG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAIPHONG">
+              <PropertyRef Name="MALOAIPHONG" />
+            </Principal>
+            <Dependent Role="PHONG">
+              <PropertyRef Name="MALOAIPHONG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

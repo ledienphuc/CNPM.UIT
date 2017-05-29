@@ -42,7 +42,7 @@
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel>
-                                    <TextBlock Text="{Binding LoaiPhong}"/>
+                                    <TextBlock x:Name="tLoaiPhong" Text="{Binding LoaiPhong}"/>
                                 </StackPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
@@ -82,13 +82,20 @@
             </ListView.View>
         </ListView>
 
+        <Grid x:Name="GridShow" Margin="0,0,0,35" Grid.RowSpan="4">
 
+            <TextBox x:Name="txbTenPhong" Height="24" Margin="19,159,20,-174" TextWrapping="Wrap" Text="{Binding SelectedItem.TenPhong, ElementName=lvPhong,Mode=OneWay}" VerticalAlignment="Top"   />
+            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Margin="19,266,0,0" Stroke="#FFF9F9F9" VerticalAlignment="Top"  Width="110" Height="24"/>
+            <TextBlock x:Name="txbDonGia"  HorizontalAlignment="Left" Margin="19,266,0,0" TextWrapping="Wrap" Text="{Binding DonGia}" VerticalAlignment="Top" Width="110" Height="24" OpacityMask="#FF807878" Foreground="#FF806E6E"/>
+        </Grid>
         <Button Content="Button" Command="{Binding ShowWindow}" Grid.Column="1" HorizontalAlignment="Left" Margin="144,44,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Grid.RowSpan="2"/>
-        <Button Content="them" Grid.Column="1" HorizontalAlignment="Left" Margin="65,72,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75"/>
+        <Button Command="{Binding ThemPhongCommand}" CommandParameter="{Binding Children, ElementName=GridShow}" Content="them" Grid.Column="1" HorizontalAlignment="Left" Margin="65,72,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75"/>
         <Button Content="xoa" Grid.Column="1" HorizontalAlignment="Left" Margin="194,72,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75"/>
-        <TextBox x:Name="txbTenPhong" Height="23" Margin="29,113,10,0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding SelectedItem.TenPhong, ElementName=lvPhong}" VerticalAlignment="Top" TextChanged="TextBox_TextChanged"  />
-        <TextBlock x:Name="txblDonGia" HorizontalAlignment="Left" Margin="56,155,0,0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding SelectedItem.DonGia, ElementName=lvPhong}" VerticalAlignment="Top"/>
-
+        <!--  <TextBox x:Name="txtLoai"  Height="24" Margin="19,136,20,0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding SelectedItem.LoaiPhong, ElementName=lvPhong,Mode=OneWay}" VerticalAlignment="Top"   /> -->
+        <Label Content="Tên phòng :" Margin="19,52,20,0" Grid.Row="2" VerticalAlignment="Top"/>
+        <Label Content="Loại phòng :" HorizontalAlignment="Left" Margin="19,111,0,0" Grid.Row="2" VerticalAlignment="Top" Width="110"/>
+        <Label Content="Đơn giá :" HorizontalAlignment="Left" Margin="19,162,0,0" Grid.Row="2" VerticalAlignment="Top" Width="110"/>
+        <ComboBox x:Name="cmbLoaiPhong" Margin="19,142,20,0" Grid.Row="2" VerticalAlignment="Top" IsSynchronizedWithCurrentItem="True" SelectedValue="{Binding SelectedItem.LoaiPhong, ElementName=lvPhong,Mode=OneWay}" ItemsSource="{Binding DanhSachLoaiPhong}" SelectedItem="{Binding LoaiPhongSelected}"/>
 
 
 

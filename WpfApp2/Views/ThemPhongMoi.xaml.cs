@@ -12,24 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WpfApp2.ViewModels;
 
 namespace WpfApp2.Views
 {
     /// <summary>
-    /// Interaction logic for Phong.xaml
+    /// Interaction logic for ThemPhongMoi.xaml
     /// </summary>
-    public partial class Phong : UserControl
+    public partial class ThemPhongMoi : UserControl
     {
-        //DanhSachPhongViewModel dsPhong = new DanhSachPhongViewModel();
-        public Phong()
+        public ThemPhongMoi()
         {
-            //DataContext = dsPhong;
             InitializeComponent();
-            
-            
         }
-
-      
     }
 }

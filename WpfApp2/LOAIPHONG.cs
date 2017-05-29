@@ -14,10 +14,17 @@ namespace WpfApp2
     
     public partial class LOAIPHONG
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public LOAIPHONG()
+        {
+            this.PHONGs = new HashSet<PHONG>();
+        }
+    
         public int MALOAIPHONG { get; set; }
         public string TENLOAIPHONG { get; set; }
         public int DONGIA { get; set; }
     
-        public virtual PHONG PHONG { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PHONG> PHONGs { get; set; }
     }
 }

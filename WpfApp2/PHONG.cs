@@ -32,8 +32,8 @@ namespace WpfApp2
         public virtual ICollection<CTHD> CTHDs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KHACHHANG> KHACHHANGs { get; set; }
-        public virtual LOAIPHONG LOAIPHONG { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PHIEUTHUE> PHIEUTHUEs { get; set; }
+        public virtual LOAIPHONG LOAIPHONG1 { get; set; }
     }
 }

@@ -36,3 +36,5 @@ C:\Users\Chang\documents\visual studio 2017\Projects\WpfApp2\WpfApp2\obj\Debug\V
 C:\Users\Chang\documents\visual studio 2017\Projects\WpfApp2\WpfApp2\obj\Debug\Views\Phong.baml
 C:\Users\Chang\documents\visual studio 2017\Projects\WpfApp2\WpfApp2\obj\Debug\Views\PhieuThue.g.cs
 C:\Users\Chang\documents\visual studio 2017\Projects\WpfApp2\WpfApp2\obj\Debug\Views\PhieuThue.baml
+C:\Users\Chang\documents\visual studio 2017\Projects\WpfApp2\WpfApp2\obj\Debug\Views\ThemPhongMoi.g.cs
+C:\Users\Chang\documents\visual studio 2017\Projects\WpfApp2\WpfApp2\obj\Debug\Views\ThemPhongMoi.baml
