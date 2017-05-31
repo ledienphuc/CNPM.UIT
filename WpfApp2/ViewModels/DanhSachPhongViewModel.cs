@@ -38,10 +38,10 @@ namespace WpfApp2.ViewModels
                 var danhMucPhong = await (from p in db.PHONGs
                                           join lp in db.LOAIPHONGs on p.MALOAIPHONG equals lp.MALOAIPHONG
                                           orderby p.MAPHONG
-                                          select new { p.TENPHONG, p.LOAIPHONG1, lp.TENLOAIPHONG, lp.DONGIA, p.TINHTRANG, p.GHICHU }).ToListAsync();
+                                          select new { p.TENPHONG, p.LOAIPHONG1, lp.TENLOAIPHONG, lp.DONGIA, p.TINHTRANG, p.GHICHU,p.MAPHONG }).ToListAsync();
                 foreach (var phong in danhMucPhong)
                 {
-                    PhongViewModel phongViewModel = new PhongViewModel { Phong = new PHONG { TENPHONG = phong.TENPHONG, LOAIPHONG1 = phong.LOAIPHONG1, GHICHU = phong.GHICHU, TINHTRANG = phong.TINHTRANG } };
+                    PhongViewModel phongViewModel = new PhongViewModel { Phong = new PHONG { TENPHONG = phong.TENPHONG, LOAIPHONG1 = phong.LOAIPHONG1, GHICHU = phong.GHICHU, TINHTRANG = phong.TINHTRANG,MAPHONG = phong.MAPHONG } };
                     _danhSachPhong.Add(phongViewModel);
                 }
                 DanhMucPhong = _danhSachPhong;
@@ -126,6 +126,13 @@ namespace WpfApp2.ViewModels
                     loaiPhongSelected = value;
             }
         }
+        private PhongViewModel phongSelected;
+
+        public PhongViewModel PhongSelected
+        {
+            get { return phongSelected; }
+            set { phongSelected = value; }
+        }
 
         public DanhSachPhongViewModel()
         {
@@ -133,6 +140,7 @@ namespace WpfApp2.ViewModels
             PhongBinding();
             DonGiaBindingLoaiPhong();
             ThemPhongCommand = new RelayCommand<UIElementCollection>(ThemPhong);
+            XoaPhongCommand = new RelayCommand(XoaPhong);
         }
         private void ThemPhong(UIElementCollection UI)
         {
@@ -152,15 +160,7 @@ namespace WpfApp2.ViewModels
                     case "txbTenPhong":
                         _tenPhong = a.Text;
                         break;
-                    case "txbGhiChu":
-                        _ghiChu = a.Text;
-                        break;
-                    case "cmbLoaiPhong":
-                        _tenLoaiPhong = a.Text;
-                        break;
-                    case "txbDonGia":
-                        _donGia = DonGia;
-                        break;
+ 
                 
                 }
 
@@ -207,7 +207,7 @@ namespace WpfApp2.ViewModels
                 {
                     Debug.Write("Entity of type " + eve.Entry.Entity.GetType().Name + " in state " + eve.Entry.State + " has the following validation errors:");
                     foreach (var ve in eve.ValidationErrors)
-                    {
+                    { 
                         Debug.Write("- Property: " + ve.PropertyName + ", Error: " + ve.ErrorMessage);
                     }
                 }
@@ -217,7 +217,23 @@ namespace WpfApp2.ViewModels
 
 
         }
+
+        private void XoaPhong()
+        {
+            KhachSanContext db = new KhachSanContext();
+
+            var phongdeleted = new PHONG { MAPHONG = phongSelected.MaPhong };
+            db.PHONGs.Attach(phongdeleted);
+            db.PHONGs.Remove(phongdeleted);
+            db.SaveChanges();
+            LoadData();
+        }
+
+        //private void SuaPhong() { };
         public ICommand ThemPhongCommand { get; set; }
+        public ICommand XoaPhongCommand { get; set; }
+        public ICommand SuaPhongCommand { get; set; }
+     
     }
 
 }

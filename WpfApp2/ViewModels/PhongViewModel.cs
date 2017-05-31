@@ -67,6 +67,11 @@ namespace WpfApp2.ViewModels
             get { return _phong.GHICHU; }
             set { _phong.GHICHU = value; RaisePropertyChanged("GhiChu"); }
         }
+        public int MaPhong
+        {
+            get { return _phong.MAPHONG; }
+            set { _phong.MAPHONG = value;RaisePropertyChanged("MaPhong"); }
+        }
 
         public void showWindow(object viewModel)
         {
