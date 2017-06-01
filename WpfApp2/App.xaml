@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:WpfApp2" 
              xmlns:view="clr-namespace:WpfApp2.Views"
              xmlns:vm="clr-namespace:WpfApp2.ViewModels"
-             StartupUri="Views/MainWindow.xaml" 
+             StartupUri="Views/ChinhSuaQuyDinh.xaml" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              d1p1:Ignorable="d" xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006">
     <Application.Resources>

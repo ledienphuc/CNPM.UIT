@@ -29,8 +29,9 @@ namespace WpfApp2.ViewModels
         }
 
 
+
         public ObservableCollection<PhongViewModel> DanhMucPhong { get; set; }
-        private async void LoadData()
+        public async void LoadData()
         {
             ObservableCollection<PhongViewModel> _danhSachPhong = new ObservableCollection<PhongViewModel>();
             using (var db = new KhachSanContext())
@@ -38,10 +39,10 @@ namespace WpfApp2.ViewModels
                 var danhMucPhong = await (from p in db.PHONGs
                                           join lp in db.LOAIPHONGs on p.MALOAIPHONG equals lp.MALOAIPHONG
                                           orderby p.MAPHONG
-                                          select new { p.TENPHONG, p.LOAIPHONG1, lp.TENLOAIPHONG, lp.DONGIA, p.TINHTRANG, p.GHICHU,p.MAPHONG }).ToListAsync();
+                                          select new { p.TENPHONG, p.LOAIPHONG1, lp.TENLOAIPHONG, lp.DONGIA, p.TINHTRANG, p.GHICHU,p.MAPHONG,p.MALOAIPHONG }).ToListAsync();
                 foreach (var phong in danhMucPhong)
                 {
-                    PhongViewModel phongViewModel = new PhongViewModel { Phong = new PHONG { TENPHONG = phong.TENPHONG, LOAIPHONG1 = phong.LOAIPHONG1, GHICHU = phong.GHICHU, TINHTRANG = phong.TINHTRANG,MAPHONG = phong.MAPHONG } };
+                    PhongViewModel phongViewModel = new PhongViewModel { Phong = new PHONG { TENPHONG = phong.TENPHONG, LOAIPHONG1 = phong.LOAIPHONG1, GHICHU = phong.GHICHU, TINHTRANG = phong.TINHTRANG,MAPHONG = phong.MAPHONG,MALOAIPHONG = phong.MALOAIPHONG } };
                     _danhSachPhong.Add(phongViewModel);
                 }
                 DanhMucPhong = _danhSachPhong;
@@ -50,6 +51,21 @@ namespace WpfApp2.ViewModels
 
             }
 
+        }
+
+        public int LienKetMaLoaiPhong()
+        {
+            int _maLoaiPhong = 0;
+            KhachSanContext db = new KhachSanContext();
+            var dsLoaiPhong = db.LOAIPHONGs.ToList<LOAIPHONG>();
+            foreach(var _loaiphong in dsLoaiPhong)
+            {
+                if(_loaiphong.TENLOAIPHONG == loaiPhongSelected)
+                {
+                    _maLoaiPhong = _loaiphong.MALOAIPHONG;
+                }
+            }
+            return _maLoaiPhong;
         }
         public ObservableCollection<String> DanhSachLoaiPhong { get; set; }
         public void PhongBinding()
@@ -141,6 +157,7 @@ namespace WpfApp2.ViewModels
             DonGiaBindingLoaiPhong();
             ThemPhongCommand = new RelayCommand<UIElementCollection>(ThemPhong);
             XoaPhongCommand = new RelayCommand(XoaPhong);
+            SuaPhongCommand = new RelayCommand<UIElementCollection>(SuaPhong);
         }
         private void ThemPhong(UIElementCollection UI)
         {
@@ -229,6 +246,44 @@ namespace WpfApp2.ViewModels
             LoadData();
         }
 
+
+        private void SuaPhong(UIElementCollection UI)
+        {
+            KhachSanContext db = new KhachSanContext();
+
+            string _tenPhong = "";
+            string _tenLoaiPhong = loaiPhongSelected;
+            string _ghiChu = "";
+
+            foreach (var item in UI)
+            {
+                TextBox a = item as TextBox;
+                if (a == null) continue;
+                switch (a.Name)
+                {
+                    case "txbTenPhong":
+                        _tenPhong = a.Text;
+                        break;
+                    case "txbGhiChu":
+                        _ghiChu = a.Text;
+                        break;                
+                }
+
+            }
+
+            PHONG updatedPhong = new PHONG { TENPHONG = _tenPhong, MAPHONG = PhongSelected.MaPhong, GHICHU = _ghiChu, TINHTRANG = phongSelected.TinhTrang, MALOAIPHONG = LienKetMaLoaiPhong() };
+
+            PHONG original = db.PHONGs.Find(updatedPhong.MAPHONG);
+
+            if (original != null)
+            {
+                db.Entry(original).CurrentValues.SetValues(updatedPhong);
+                db.SaveChanges();
+            }
+            LoadData();
+        }
+
+
         //private void SuaPhong() { };
         public ICommand ThemPhongCommand { get; set; }
         public ICommand XoaPhongCommand { get; set; }
@@ -237,3 +292,4 @@ namespace WpfApp2.ViewModels
     }
 
 }
+;

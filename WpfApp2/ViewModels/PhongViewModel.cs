@@ -72,7 +72,11 @@ namespace WpfApp2.ViewModels
             get { return _phong.MAPHONG; }
             set { _phong.MAPHONG = value;RaisePropertyChanged("MaPhong"); }
         }
-
+        public int MaLoaiPhong
+        {
+            get { return _phong.MALOAIPHONG; }
+            set { _phong.MALOAIPHONG = value; }
+        }
         public void showWindow(object viewModel)
         {
             var win = new Window();
