@@ -91,9 +91,6 @@
     <Compile Include="Views\ChinhSuaQuyDinh.xaml.cs">
       <DependentUpon>ChinhSuaQuyDinh.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ThemPhongMoi.xaml.cs">
-      <DependentUpon>ThemPhongMoi.xaml</DependentUpon>
-    </Compile>
     <Page Include="Views\ChinhSuaQuyDinh.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -163,10 +160,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Phong.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ThemPhongMoi.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
