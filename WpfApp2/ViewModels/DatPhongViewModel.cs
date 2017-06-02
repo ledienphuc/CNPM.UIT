@@ -1,4 +1,4 @@
-﻿using GalaSoft.MvvmLight;
+﻿ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using GalaSoft.MvvmLight.Messaging;
 using System;
@@ -45,10 +45,14 @@ namespace WpfApp2.ViewModels
             LapPhieuThuePhongCommand = new RelayCommand<String>(ExecuteLapPhieuThuePhong);
         }
 
-        private void ExecuteLapPhieuThuePhong(string tenPhong)
+        private void ExecuteLapPhieuThuePhong(String tenPhong)
         {
-            
-            showWindow(tenPhong);
+            KhachSanContext db = new KhachSanContext();
+            var phong =  db.PHONGs.ToList().Find(p => p.TENPHONG == tenPhong);
+            if (phong.TINHTRANG == "Trống")
+            {
+                showWindow(tenPhong);
+            }
 
         }
 

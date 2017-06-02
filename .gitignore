@@ -323,3 +323,6 @@ WpfApp2/obj/Debug/WpfApp2_MarkupCompile.cache
 WpfApp2/PHONG.cs
 WpfApp2/WpfApp2.csproj
 *.csproj
+*.exe
+*.pdb
+*.lref
