@@ -90,7 +90,7 @@
             <TextBox Name="DiaChiKH2" Grid.Column="4" Grid.Row="2" />
             <TextBox Name="DiaChiKH3" Grid.Column="4" Grid.Row="3" />
         </Grid>
-        <Button Command="{Binding LuuCommand}" CommandParameter="{Binding children, ElementName=DsKH}" Content="Lưu" HorizontalAlignment="Right" Grid.Row="2" VerticalAlignment="Center" Width="100" MinWidth="100" MinHeight="50" Height="50"/>
+        <Button Command="{Binding LuuCommand}" CommandParameter="{Binding Children, ElementName=DsKH}" Content="Lưu" HorizontalAlignment="Right" Grid.Row="2" VerticalAlignment="Center" Width="100" MinWidth="100" MinHeight="50" Height="50"/>
         <Button Content="Hủy" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" Width="100" MinWidth="100" MinHeight="50" Height="50"/>
 
     </Grid>

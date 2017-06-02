@@ -90,16 +90,25 @@ namespace WpfApp2.ViewModels
                 switch (a.Name)
                 {
                     case "KH1":
-                        count++;
-                        KH1.TenKhachHang = a.Text;
+                        if (a.Text != "")
+                        {
+                            count++;
+                            KH1.TenKhachHang = a.Text;
+                        }
                         break;
                     case "KH2":
-                        count++;
-                        KH2.TenKhachHang = a.Text;
+                        if (a.Text != "")
+                        {
+                            count++;
+                            KH2.TenKhachHang = a.Text;
+                        }
                         break;
                     case "KH3":
-                        count++;
-                        KH3.TenKhachHang = a.Text;
+                        if (a.Text != "")
+                        {
+                            count++;
+                            KH3.TenKhachHang = a.Text;
+                        }
                         break;
                     case "CMNDKH1":
                         KH1.CMND = a.Text;
@@ -147,10 +156,11 @@ namespace WpfApp2.ViewModels
             // sua ma phong thanh kieu int trong sql
             int maPhong = db.PHONGs.ToList().Find(p => p.TENPHONG == TenPhong).MAPHONG;
 
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < dSMaLK.Count; i++)
             {
                 KHACHHANG newKH = new KHACHHANG()
                 {
+                    TENKHACHHANG = _danhSachKhachHang[i].TenKhachHang,
                     CMND = _danhSachKhachHang[i].CMND,
                     DIACHI = _danhSachKhachHang[i].DiaChi,
                     MAKHACHHANG = maKH,
