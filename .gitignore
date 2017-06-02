@@ -326,3 +326,6 @@ WpfApp2/WpfApp2.csproj
 *.exe
 *.pdb
 *.lref
+*.exe
+*.pdb
+*.lref
