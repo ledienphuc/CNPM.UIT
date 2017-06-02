@@ -22,7 +22,7 @@ namespace WpfApp2
     
         public int MAHD { get; set; }
         public string DIACHI { get; set; }
-        public string TRIGIA { get; set; }
+        public Nullable<int> TRIGIA { get; set; }
         public Nullable<int> SOLUONGKHACH { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

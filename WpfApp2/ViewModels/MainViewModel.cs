@@ -20,8 +20,9 @@ namespace WpfApp2.ViewModels
     {
         private ViewModelBase _currentViewModel;
 
-        readonly static DanhSachPhongViewModel _firstViewModel = new DanhSachPhongViewModel();
-        //readonly static SecondViewModel _secondViewModel = new SecondViewModel();
+        //readonly static MainViewModel _mainViewModel = new MainViewModel();
+        readonly static DanhSachPhongViewModel _danhSachPhongViewModel = new DanhSachPhongViewModel();
+        readonly static DatPhongViewModel _datPhongViewModel = new DatPhongViewModel();
 
         public ViewModelBase CurrentViewModel
         {
@@ -38,24 +39,31 @@ namespace WpfApp2.ViewModels
             }
         }
 
-        public ICommand FirstViewCommand { get; private set; }
-        public ICommand SecondViewCommand { get; private set; }
+        public ICommand MainViewCommand { get; private set; }
+        public ICommand DanhSachPhongViewCommand { get; private set; }
+        public ICommand DatPhongViewCommand { get; private set; }
 
         public MainViewModel()
         {
-            //CurrentViewModel = MainViewModel._firstViewModel;
-            FirstViewCommand = new RelayCommand(() => ExecuteFirstViewCommand());
-            //SecondViewCommand = new RelayCommand(() => ExecuteSecondViewCommand());
+            CurrentViewModel = null;
+            //MainViewCommand = new RelayCommand(() => ExecuteFirstViewCommand());
+            DanhSachPhongViewCommand = new RelayCommand(() => ExecuteDanhSachPhongViewCommand());
+            DatPhongViewCommand = new RelayCommand(() => ExecuteDatPhongViewCommand());
         }
 
-        private void ExecuteFirstViewCommand()
+        private void ExecuteMainViewCommand()
         {
-            CurrentViewModel = MainViewModel._firstViewModel;
+           // CurrentViewModel = MainViewModel._mainViewModel;
         }
 
-        //private void ExecuteSecondViewCommand()
-        //{
-        //    CurrentViewModel = MainViewModel._secondViewModel;
-        //}
+        private void ExecuteDanhSachPhongViewCommand()
+        {
+            CurrentViewModel = MainViewModel._danhSachPhongViewModel;
+        }
+
+        private void ExecuteDatPhongViewCommand()
+        {
+            CurrentViewModel = MainViewModel._datPhongViewModel;
+        }
     }
 }

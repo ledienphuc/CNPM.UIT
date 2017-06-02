@@ -21,6 +21,7 @@ namespace WpfApp2
         }
     
         public int MAKHACHHANG { get; set; }
+        public string TENKHACHHANG { get; set; }
         public int MALOAIKHACH { get; set; }
         public string CMND { get; set; }
         public string DIACHI { get; set; }

@@ -12,18 +12,12 @@ using WpfApp2.Services;
 
 namespace WpfApp2.ViewModels
 {
-    class PhongViewModel : ViewModelBase, IWindowService
+    class PhongViewModel : ViewModelBase
     {
         PHONG _phong;
 
-        public ICommand ShowWindow { get; set; }
-
         public PhongViewModel()
         {
-            ShowWindow = new RelayCommand(() =>
-            {
-                showWindow(new PhieuThueViewModel());
-            });
         }
         public PHONG Phong
         {
@@ -46,14 +40,14 @@ namespace WpfApp2.ViewModels
 
         public string LoaiPhong
         {
-            get { return _phong.LOAIPHONG1.TENLOAIPHONG; }
-            set { _phong.LOAIPHONG1.TENLOAIPHONG = value; RaisePropertyChanged("LoaiPhong"); }
+            get { return _phong.LOAIPHONG.TENLOAIPHONG; }
+            set { _phong.LOAIPHONG.TENLOAIPHONG = value; RaisePropertyChanged("LoaiPhong"); }
         }
 
         public Int32 DonGia
         {
-            get { return _phong.LOAIPHONG1.DONGIA; }
-            set { _phong.LOAIPHONG1.DONGIA = value; RaisePropertyChanged("DonGia"); }
+            get { return _phong.LOAIPHONG.DONGIA; }
+            set { _phong.LOAIPHONG.DONGIA = value; RaisePropertyChanged("DonGia"); }
         }
 
         public string TinhTrang
@@ -77,13 +71,6 @@ namespace WpfApp2.ViewModels
             get { return _phong.MALOAIPHONG; }
             set { _phong.MALOAIPHONG = value; }
         }
-        public void showWindow(object viewModel)
-        {
-            var win = new Window();
-            win.Content = viewModel;
-            win.Show();
-        }
-
 
     }
 }

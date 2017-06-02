@@ -39,10 +39,10 @@ namespace WpfApp2.ViewModels
                 var danhMucPhong = await (from p in db.PHONGs
                                           join lp in db.LOAIPHONGs on p.MALOAIPHONG equals lp.MALOAIPHONG
                                           orderby p.MAPHONG
-                                          select new { p.TENPHONG, p.LOAIPHONG1, lp.TENLOAIPHONG, lp.DONGIA, p.TINHTRANG, p.GHICHU,p.MAPHONG,p.MALOAIPHONG }).ToListAsync();
+                                          select new { p.TENPHONG, p.LOAIPHONG, lp.TENLOAIPHONG, lp.DONGIA, p.TINHTRANG, p.GHICHU,p.MAPHONG,p.MALOAIPHONG }).ToListAsync();
                 foreach (var phong in danhMucPhong)
                 {
-                    PhongViewModel phongViewModel = new PhongViewModel { Phong = new PHONG { TENPHONG = phong.TENPHONG, LOAIPHONG1 = phong.LOAIPHONG1, GHICHU = phong.GHICHU, TINHTRANG = phong.TINHTRANG,MAPHONG = phong.MAPHONG,MALOAIPHONG = phong.MALOAIPHONG } };
+                    PhongViewModel phongViewModel = new PhongViewModel { Phong = new PHONG { TENPHONG = phong.TENPHONG, LOAIPHONG = phong.LOAIPHONG, GHICHU = phong.GHICHU, TINHTRANG = phong.TINHTRANG,MAPHONG = phong.MAPHONG,MALOAIPHONG = phong.MALOAIPHONG } };
                     _danhSachPhong.Add(phongViewModel);
                 }
                 DanhMucPhong = _danhSachPhong;

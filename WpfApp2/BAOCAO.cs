@@ -15,7 +15,7 @@ namespace WpfApp2
     public partial class BAOCAO
     {
         public int THANG { get; set; }
-        public string LOAIPHONG { get; set; }
+        public int LOAIPHONG { get; set; }
         public Nullable<int> DOANHTHU { get; set; }
         public Nullable<double> TYLE { get; set; }
     }
