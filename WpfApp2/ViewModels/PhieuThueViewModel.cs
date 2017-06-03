@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
+using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -77,8 +78,7 @@ namespace WpfApp2.ViewModels
         void luuKhachHang(UIElementCollection UI)
         {
             int count = 0;
-
-
+            
             KhachHangViewModel KH1 = new KhachHangViewModel();
             KhachHangViewModel KH2 = new KhachHangViewModel();
             KhachHangViewModel KH3 = new KhachHangViewModel();
@@ -155,6 +155,14 @@ namespace WpfApp2.ViewModels
 
             // sua ma phong thanh kieu int trong sql
             int maPhong = db.PHONGs.ToList().Find(p => p.TENPHONG == TenPhong).MAPHONG;
+            var newPhong = db.PHONGs.ToList().Find(p => p.TENPHONG == TenPhong);
+            newPhong.TINHTRANG = "Đầy";
+            var currentPhong = db.PHONGs.ToList().Find(p => p.TENPHONG == TenPhong);
+            db.PHONGs.Attach(currentPhong);
+            db.PHONGs.Remove(currentPhong);
+            db.SaveChanges();
+
+            db.PHONGs.Add(newPhong);
 
             for (int i = 0; i < dSMaLK.Count; i++)
             {
@@ -170,26 +178,16 @@ namespace WpfApp2.ViewModels
                 db.KHACHHANGs.Add(newKH);
                 maKH++;
             }
-            try
-            {
-                // Your code...
-                // Could also be before try if you know the exception occurs in SaveChanges
+            db.SaveChanges();
 
-                db.SaveChanges();
-            }
-            catch (DbEntityValidationException e)
+            var result = MessageBox.Show("Đã lưu thành công!", "Thông báo", MessageBoxButton.OK);
+            switch (result)
             {
-                foreach (var eve in e.EntityValidationErrors)
-                {
-                    Debug.Write("Entity of type " + eve.Entry.Entity.GetType().Name + " in state " + eve.Entry.State + " has the following validation errors:");
-                    foreach (var ve in eve.ValidationErrors)
-                    {
-                        Debug.Write("- Property: " + ve.PropertyName + ", Error: " + ve.ErrorMessage);
-                    }
-                }
-                throw;
+                case MessageBoxResult.OK:
+                    Messenger.Default.Send(new NotificationMessage("Close window"));
+                    break;
             }
-            //LoadData();
+            
         }
 
     }

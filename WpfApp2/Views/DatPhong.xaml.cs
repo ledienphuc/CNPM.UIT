@@ -29,9 +29,12 @@ namespace WpfApp2.Views
         
         private void NotificationMessageReceived(NotificationMessage msg)
         {
+            if (msg.Notification != "Close window")
+            {
                 var LapPhieuThueView = new PhieuThuePhong();
-                LapPhieuThueView.DataContext = new PhieuThueViewModel(tenPhong: msg.Notification );
+                LapPhieuThueView.DataContext = new PhieuThueViewModel(tenPhong: msg.Notification);
                 LapPhieuThueView.Show();
+            }
         }
         
     }

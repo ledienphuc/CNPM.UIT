@@ -43,6 +43,15 @@ namespace WpfApp2.ViewModels
         {
             LoadData();
             LapPhieuThuePhongCommand = new RelayCommand<String>(ExecuteLapPhieuThuePhong);
+            Messenger.Default.Register<NotificationMessage>(this, NotificationMessageReceived);
+
+        }
+
+        {
+            if (msg.Notification == "Close window")
+            {
+                LoadData();
+            }
         }
 
         private void ExecuteLapPhieuThuePhong(String tenPhong)
@@ -52,6 +61,10 @@ namespace WpfApp2.ViewModels
             if (phong.TINHTRANG == "Trống")
             {
                 showWindow(tenPhong);
+            }
+            else
+            {
+                //show   
             }
 
         }
