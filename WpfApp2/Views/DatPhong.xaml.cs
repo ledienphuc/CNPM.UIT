@@ -29,14 +29,14 @@ namespace WpfApp2.Views
         
         private void NotificationMessageReceived(OpenWindowMessage msg)
         {
-            if (msg.WindowName == View.PhieuThuePhong)
+            if (msg.WindowName == View.PhieuThuePhong && msg.Message =="Open Window")
             {
                 var LapPhieuThueView = new PhieuThuePhong();
                 LapPhieuThueView.DataContext = new PhieuThueViewModel(tenPhong: msg.TenPhong);
                 LapPhieuThueView.Show();
             }
 
-            if(msg.WindowName == View.HoaDon)
+            if(msg.WindowName == View.HoaDon && msg.Message =="Open Window")
             {
                 var hoaDonView = new HoaDon();
                 hoaDonView.DataContext = new HoaDonViewModel(tenPhong: msg.TenPhong);

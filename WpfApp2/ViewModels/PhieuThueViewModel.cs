@@ -194,7 +194,7 @@ namespace WpfApp2.ViewModels
 
         void CloseWindow()
         {
-            Messenger.Default.Send(new NotificationMessage("Close window"));
+            Messenger.Default.Send<OpenWindowMessage>(new OpenWindowMessage() { WindowName = View.PhieuThuePhong, Message = "Close Window"});
         }
 
     }

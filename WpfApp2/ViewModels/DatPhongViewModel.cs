@@ -42,31 +42,31 @@ namespace WpfApp2.ViewModels
         public DatPhongViewModel()
         {
             LoadData();
-            LapPhieuThuePhongCommand = new RelayCommand<PhongViewModel>(ExecuteLapPhieuThuePhong);
-            Messenger.Default.Register<NotificationMessage>(this, NotificationMessageReceived);
+            LapPhieuThuePhongCommand = new RelayCommand<String>(ExecuteLapPhieuThuePhong);
+            Messenger.Default.Register<OpenWindowMessage>(this, NotificationMessageReceived);
 
         }
 
-        private void NotificationMessageReceived(NotificationMessage msg)
+        private void NotificationMessageReceived(OpenWindowMessage msg)
         {
-            if (msg.Notification == "Close window")
+            if (msg.Message == "Close window")
             {
                 LoadData();
             }
         }
 
-        private void ExecuteLapPhieuThuePhong(PhongViewModel thongTinPhong)
+        private void ExecuteLapPhieuThuePhong(String tenPhong)
         {
             KhachSanContext db = new KhachSanContext();
-            //var phong =  db.PHONGs.ToList().Find(p => p.TENPHONG == tenPhong);
-            if (thongTinPhong.TinhTrang == "Trống")
+            var phong =  db.PHONGs.ToList().Find(p => p.TENPHONG == tenPhong);
+            if (phong.TINHTRANG == "Trống")
             {
-                var phieuThuePhongWindow = new OpenWindowMessage { WindowName = View.PhieuThuePhong, TenPhong = thongTinPhong.TenPhong };
+                var phieuThuePhongWindow = new OpenWindowMessage { WindowName = View.PhieuThuePhong, Message="Open Window", TenPhong = tenPhong };
                 showWindow(phieuThuePhongWindow);
             }
             else
             {
-                var hoaDonWindow = new OpenWindowMessage { WindowName = View.HoaDon, TenPhong = thongTinPhong.TenPhong };
+                var hoaDonWindow = new OpenWindowMessage { WindowName = View.HoaDon, Message = "Open Window", TenPhong = tenPhong};
                 showWindow(hoaDonWindow);
             }
 

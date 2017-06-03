@@ -10,8 +10,7 @@ namespace WpfApp2.ViewModels
     {
         public View WindowName { get; set; }
         public string TenPhong { get; set; }
-        public List<KhachHangViewModel> DanhSachKhachHang { get; set; }
-        public PhongViewModel Phong { get; set; }
+        public string Message { get; set; }
     }
 
     enum View

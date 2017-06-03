@@ -23,12 +23,12 @@ namespace WpfApp2.Views
         public PhieuThuePhong()
         {  
             InitializeComponent();
-            Messenger.Default.Register<NotificationMessage>(this, NotificationMessageReceived);
+            Messenger.Default.Register<OpenWindowMessage>(this, NotificationMessageReceived);
         }
 
-        private void NotificationMessageReceived(NotificationMessage msg)
+        private void NotificationMessageReceived(OpenWindowMessage msg)
         {
-            if(msg.Notification == "Close window")
+            if(msg.WindowName == View.PhieuThuePhong && msg.Message == "Close Window")
             {
                 this.Close();
             }

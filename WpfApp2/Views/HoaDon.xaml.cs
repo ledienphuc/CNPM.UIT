@@ -24,7 +24,14 @@ namespace WpfApp2.Views
         public HoaDon()
         {
             InitializeComponent();
-
+            Messenger.Default.Register<OpenWindowMessage>(this, NotificationMessageReceived);
+        }
+        private void NotificationMessageReceived(OpenWindowMessage msg)
+        {
+            if (msg.WindowName == View.HoaDon && msg.Message == "Close Window")
+            {
+                this.Close();
+            }
         }
 
     }
