@@ -47,6 +47,7 @@ namespace WpfApp2.ViewModels
 
         }
 
+        private void NotificationMessageReceived(NotificationMessage msg)
         {
             if (msg.Notification == "Close window")
             {
