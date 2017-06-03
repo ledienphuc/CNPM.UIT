@@ -24,16 +24,23 @@ namespace WpfApp2.Views
         public DatPhong()
         {
             InitializeComponent();
-            Messenger.Default.Register<NotificationMessage>(this, NotificationMessageReceived);
+            Messenger.Default.Register<OpenWindowMessage>(this, NotificationMessageReceived);
         }
         
-        private void NotificationMessageReceived(NotificationMessage msg)
+        private void NotificationMessageReceived(OpenWindowMessage msg)
         {
-            if (msg.Notification != "Close window")
+            if (msg.WindowName == View.PhieuThuePhong)
             {
                 var LapPhieuThueView = new PhieuThuePhong();
-                LapPhieuThueView.DataContext = new PhieuThueViewModel(tenPhong: msg.Notification);
+                LapPhieuThueView.DataContext = new PhieuThueViewModel(tenPhong: msg.TenPhong);
                 LapPhieuThueView.Show();
+            }
+
+            if(msg.WindowName == View.HoaDon)
+            {
+                var hoaDonView = new HoaDon();
+                hoaDonView.DataContext = new HoaDonViewModel(tenPhong: msg.TenPhong);
+                hoaDonView.Show();
             }
         }
         

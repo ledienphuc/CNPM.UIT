@@ -36,7 +36,7 @@
 
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Button Command="{Binding ElementName=lsvPhong, Path=DataContext.LapPhieuThuePhongCommand}" CommandParameter="{Binding Text, ElementName=namePhong}">
+                    <Button Command="{Binding ElementName=lsvPhong, Path=DataContext.LapPhieuThuePhongCommand}" CommandParameter="{Binding SelectedItem}">
                         <DockPanel  Background="#FFAB5757">
                             <TextBlock TextAlignment="Center">
                             <Run Text="{Binding TenPhong}" x:Name="namePhong"/>

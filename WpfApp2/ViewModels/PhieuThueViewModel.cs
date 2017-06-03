@@ -64,11 +64,13 @@ namespace WpfApp2.ViewModels
             thisDay = DateTime.Today;
             LoadDanhSachLoaiKhach();
             LuuCommand = new RelayCommand<UIElementCollection>(luuKhachHang);
+            CloseWindowCommand = new RelayCommand(CloseWindow);
         }
 
         #region Command
 
         public ICommand LuuCommand { get; set; }
+        public ICommand CloseWindowCommand { get; set; }
 
         #endregion
         /// <summary>
@@ -184,10 +186,15 @@ namespace WpfApp2.ViewModels
             switch (result)
             {
                 case MessageBoxResult.OK:
-                    Messenger.Default.Send(new NotificationMessage("Close window"));
+                    CloseWindow();
                     break;
             }
             
+        }
+
+        void CloseWindow()
+        {
+            Messenger.Default.Send(new NotificationMessage("Close window"));
         }
 
     }

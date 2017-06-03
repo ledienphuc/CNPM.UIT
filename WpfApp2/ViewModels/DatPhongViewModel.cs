@@ -42,7 +42,7 @@ namespace WpfApp2.ViewModels
         public DatPhongViewModel()
         {
             LoadData();
-            LapPhieuThuePhongCommand = new RelayCommand<String>(ExecuteLapPhieuThuePhong);
+            LapPhieuThuePhongCommand = new RelayCommand<PhongViewModel>(ExecuteLapPhieuThuePhong);
             Messenger.Default.Register<NotificationMessage>(this, NotificationMessageReceived);
 
         }
@@ -55,24 +55,26 @@ namespace WpfApp2.ViewModels
             }
         }
 
-        private void ExecuteLapPhieuThuePhong(String tenPhong)
+        private void ExecuteLapPhieuThuePhong(PhongViewModel thongTinPhong)
         {
             KhachSanContext db = new KhachSanContext();
-            var phong =  db.PHONGs.ToList().Find(p => p.TENPHONG == tenPhong);
-            if (phong.TINHTRANG == "Trống")
+            //var phong =  db.PHONGs.ToList().Find(p => p.TENPHONG == tenPhong);
+            if (thongTinPhong.TinhTrang == "Trống")
             {
-                showWindow(tenPhong);
+                var phieuThuePhongWindow = new OpenWindowMessage { WindowName = View.PhieuThuePhong, TenPhong = thongTinPhong.TenPhong };
+                showWindow(phieuThuePhongWindow);
             }
             else
             {
-                //show   
+                var hoaDonWindow = new OpenWindowMessage { WindowName = View.HoaDon, TenPhong = thongTinPhong.TenPhong };
+                showWindow(hoaDonWindow);
             }
 
         }
 
-        public void showWindow(string tenPhong)
+        public void showWindow( OpenWindowMessage windowName)
         {
-            Messenger.Default.Send(new NotificationMessage(tenPhong));
+            Messenger.Default.Send<OpenWindowMessage>(windowName);
             
         }
     }
