@@ -180,6 +180,19 @@ namespace WpfApp2.ViewModels
                 db.KHACHHANGs.Add(newKH);
                 maKH++;
             }
+
+            int maPhieuThue = 0;
+            var dsPhieuThue = db.PHIEUTHUEs.ToList();
+
+            if(dsPhieuThue.Count != 0)
+            {
+                maPhieuThue = dsPhieuThue[count - 1].MAPHIEUTHUE + 1;
+            }
+
+
+            PHIEUTHUE newPhieuThue = new PHIEUTHUE() { MAPHONG = maPhong, NGAYTHUE = thisDay, SOLUONGKHACH = dsKH.Count, MAPHIEUTHUE = maPhieuThue };
+
+            db.PHIEUTHUEs.Add(newPhieuThue);
             db.SaveChanges();
 
             var result = MessageBox.Show("Đã lưu thành công!", "Thông báo", MessageBoxButton.OK);

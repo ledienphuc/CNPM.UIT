@@ -49,7 +49,7 @@ namespace WpfApp2.ViewModels
 
         private void NotificationMessageReceived(OpenWindowMessage msg)
         {
-            if (msg.Message == "Close window")
+            if (msg.Message == "Close Window")
             {
                 LoadData();
             }

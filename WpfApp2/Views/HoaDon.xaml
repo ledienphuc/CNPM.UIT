@@ -7,7 +7,22 @@
         mc:Ignorable="d"
         Title="HoaDon" Height="500" Width="500">
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="42,24,0,0" TextWrapping="Wrap" Text="{Binding TenPhong}" VerticalAlignment="Top" Height="20" Width="60"/>
+        <TextBlock HorizontalAlignment="Left" Margin="42,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" Width="auto">
+            <Run Text="Tên Phòng:"/>
+            <Run Text="{Binding TenPhong}"/>
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="182,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" Width="auto">
+            <Run Text="Loại phòng: "/>
+            <Run Text="{Binding LoaiPhong}"/>
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="298,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" Width="auto">
+            <Run Text="Thuê ngày: "/>
+            <Run Text="{Binding NgayThue}"/>
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="298,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" Width="auto">
+            <Run Text="Số ngày thuê: "/>
+            <Run Text="{Binding SoNgayThue}"/>
+        </TextBlock>
         <ListView ItemsSource="{Binding DanhSachKhachHang}" HorizontalAlignment="Left" Height="139" Margin="42,90,0,0" VerticalAlignment="Top" Width="375">
             <ListView.View>
                 <GridView>
@@ -55,14 +70,12 @@
             </ListView.View>
         </ListView>
 
-        <TextBlock HorizontalAlignment="Left" Margin="147,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" Width="60">
-            <Run Text="Phòng: "/>
-            <Run Text="{Binding LoaiPhong}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="331,244,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" Width="auto">
+            <Run Text="Thanh tien:"/>
+            <Run Text="{Binding ThanhTien}"/>
         </TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="258,24,0,0" TextWrapping="Wrap" Text="So ngay thue" VerticalAlignment="Top" Height="20" Width="86"/>
-        <TextBlock HorizontalAlignment="Left" Margin="331,244,0,0" TextWrapping="Wrap" Text="Thanh tien:" VerticalAlignment="Top" Height="20" Width="86"/>
         <TextBlock HorizontalAlignment="Left" Margin="42,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" Width="165" FontSize="10"><Run Text="Danh sách khách hàng"/><LineBreak/><Run/></TextBlock>
-        <Button Content="Lưu hóa đơn" HorizontalAlignment="Left" Margin="42,282,0,0" VerticalAlignment="Top" Width="76"/>
+        <Button Command="{Binding LuuHoaDonCommand}" Content="Thanh toán" HorizontalAlignment="Left" Margin="42,282,0,0" VerticalAlignment="Top" Width="76"/>
         <Button Command="{Binding HuyCommand}" Content="Hủy" HorizontalAlignment="Left" Margin="356,282,0,0" VerticalAlignment="Top" Width="76"/>
 
     </Grid>
