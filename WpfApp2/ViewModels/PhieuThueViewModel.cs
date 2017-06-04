@@ -143,10 +143,11 @@ namespace WpfApp2.ViewModels
             var dsKH = db.KHACHHANGs.ToList();
             if (dsKH.Count != 0)
             {
-                //sua lai ma khach hang la kieu int trong sql
+                
                 maKH = dsKH[dsKH.Count - 1].MAKHACHHANG + 1;
             }
 
+            // lay danh sach ma loai khach
             List<int> dSMaLK = new List<int>();
             if (LoaiKH1Selected != null)
                 dSMaLK.Add(db.LOAIKHACHes.ToList().Find(p => p.TENLOAIKHACH == LoaiKH1Selected).MALOAIKHACH);
@@ -155,17 +156,15 @@ namespace WpfApp2.ViewModels
             if (LoaiKH3Selected != null)
                 dSMaLK.Add(db.LOAIKHACHes.ToList().Find(p => p.TENLOAIKHACH == LoaiKH3Selected).MALOAIKHACH);
 
-            // sua ma phong thanh kieu int trong sql
+            // Sua tinh trang phong 
             int maPhong = db.PHONGs.ToList().Find(p => p.TENPHONG == TenPhong).MAPHONG;
             var newPhong = db.PHONGs.ToList().Find(p => p.TENPHONG == TenPhong);
             newPhong.TINHTRANG = "Đầy";
-            var currentPhong = db.PHONGs.ToList().Find(p => p.TENPHONG == TenPhong);
-            db.PHONGs.Attach(currentPhong);
-            db.PHONGs.Remove(currentPhong);
+            db.PHONGs.Attach(newPhong);
+            db.Entry(newPhong).Property(x => x.TINHTRANG).IsModified = true;
             db.SaveChanges();
 
-            db.PHONGs.Add(newPhong);
-
+            // Luu khach hang
             for (int i = 0; i < dSMaLK.Count; i++)
             {
                 KHACHHANG newKH = new KHACHHANG()
@@ -180,7 +179,9 @@ namespace WpfApp2.ViewModels
                 db.KHACHHANGs.Add(newKH);
                 maKH++;
             }
+            db.SaveChanges();
 
+            //Luu Phieu Thue
             int maPhieuThue = 0;
             var dsPhieuThue = db.PHIEUTHUEs.ToList();
 
@@ -189,11 +190,21 @@ namespace WpfApp2.ViewModels
                 maPhieuThue = dsPhieuThue[count - 1].MAPHIEUTHUE + 1;
             }
 
-
             PHIEUTHUE newPhieuThue = new PHIEUTHUE() { MAPHONG = maPhong, NGAYTHUE = thisDay, SOLUONGKHACH = dsKH.Count, MAPHIEUTHUE = maPhieuThue };
 
             db.PHIEUTHUEs.Add(newPhieuThue);
             db.SaveChanges();
+
+
+            // Luu CTPT
+            //var dsCTPT = db.CTPTs.ToList();
+            //int maCTPT = 0;
+            //if(dsCTPT.Count != 0)
+            //{
+            //    maCTPT = dsCTPT[dsCTPT.Count - 1].MACTPT + 1;
+            //}
+            //db.CTPTs.Add(new CTPT() { MAKHACHHANG = dsKH[0].MAKHACHHANG, MAPHIEUTHUE = maPhieuThue, MACTPT = maCTPT });
+            //db.SaveChanges();
 
             var result = MessageBox.Show("Đã lưu thành công!", "Thông báo", MessageBoxButton.OK);
             switch (result)
