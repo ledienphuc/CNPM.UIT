@@ -55,6 +55,7 @@ namespace WpfApp2.ViewModels
 
             var danhSachKhachHangDB = (from kh in db.KHACHHANGs
                                        join ctpt in db.CTPTs on kh.MAKHACHHANG equals ctpt.MAKHACHHANG
+                                       join pt in db.PHIEUTHUEs on ctpt.MAPHIEUTHUE equals pt.MAPHIEUTHUE
                                      where kh.PHONG.TENPHONG == TenPhong
                                      select new { kh.TENKHACHHANG, kh.LOAIKHACH.TENLOAIKHACH, kh.CMND, kh.DIACHI }).ToList();
             foreach(var KH in danhSachKhachHangDB)
