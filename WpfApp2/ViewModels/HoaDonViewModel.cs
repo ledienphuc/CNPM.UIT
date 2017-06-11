@@ -52,11 +52,12 @@ namespace WpfApp2.ViewModels
             DonGia = thongTinPhong.LOAIPHONG.DONGIA;
 
             // Lay danh sach khach hang thue phong do lan cuoi cuoi de lap hoa don
+            var phieuThueCuoi = db.PHIEUTHUEs.ToList().FindLast(p => p.PHONG.TENPHONG == thongTinPhong.TENPHONG);
 
             var danhSachKhachHangDB = (from kh in db.KHACHHANGs
                                        join ctpt in db.CTPTs on kh.MAKHACHHANG equals ctpt.MAKHACHHANG
                                        join pt in db.PHIEUTHUEs on ctpt.MAPHIEUTHUE equals pt.MAPHIEUTHUE
-                                     where kh.PHONG.TENPHONG == TenPhong
+                                     where pt.MAPHIEUTHUE == phieuThueCuoi.MAPHIEUTHUE
                                      select new { kh.TENKHACHHANG, kh.LOAIKHACH.TENLOAIKHACH, kh.CMND, kh.DIACHI }).ToList();
             foreach(var KH in danhSachKhachHangDB)
             {

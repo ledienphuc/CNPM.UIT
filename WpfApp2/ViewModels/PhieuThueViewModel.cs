@@ -163,7 +163,7 @@ namespace WpfApp2.ViewModels
             db.PHONGs.Attach(newPhong);
             db.Entry(newPhong).Property(x => x.TINHTRANG).IsModified = true;
             db.SaveChanges();
-
+            List<KHACHHANG> danhSachKhachHang = new List<KHACHHANG>();
             // Luu khach hang
             for (int i = 0; i < dSMaLK.Count; i++)
             {
@@ -176,6 +176,7 @@ namespace WpfApp2.ViewModels
                     MALOAIKHACH = dSMaLK[i],
                     MAPHONG = maPhong,
                 };
+                danhSachKhachHang.Add(newKH);
                 db.KHACHHANGs.Add(newKH);
                 maKH++;
             }
@@ -187,10 +188,10 @@ namespace WpfApp2.ViewModels
 
             if(dsPhieuThue.Count != 0)
             {
-                maPhieuThue = dsPhieuThue[count - 1].MAPHIEUTHUE + 1;
+                maPhieuThue = dsPhieuThue[dsPhieuThue.Count-1].MAPHIEUTHUE + 1;
             }
 
-            PHIEUTHUE newPhieuThue = new PHIEUTHUE() { MAPHONG = maPhong, NGAYTHUE = thisDay, SOLUONGKHACH = dsKH.Count, MAPHIEUTHUE = maPhieuThue };
+            PHIEUTHUE newPhieuThue = new PHIEUTHUE() { MAPHONG = maPhong, NGAYTHUE = thisDay, SOLUONGKHACH = _danhSachKhachHang.Count, MAPHIEUTHUE = maPhieuThue };
 
             db.PHIEUTHUEs.Add(newPhieuThue);
             db.SaveChanges();
@@ -203,7 +204,11 @@ namespace WpfApp2.ViewModels
             {
                 maCTPT = dsCTPT[dsCTPT.Count - 1].MACTPT + 1;
             }
-            db.CTPTs.Add(new CTPT() { MAKHACHHANG = dsKH[0].MAKHACHHANG, MAPHIEUTHUE = maPhieuThue, MACTPT = maCTPT });
+            foreach(var kh in danhSachKhachHang)
+            {
+                db.CTPTs.Add(new CTPT() { MAKHACHHANG = kh.MAKHACHHANG , MAPHIEUTHUE = maPhieuThue, MACTPT = maCTPT });
+                maCTPT++;
+            }
             db.SaveChanges();
 
             var result = MessageBox.Show("Đã lưu thành công!", "Thông báo", MessageBoxButton.OK);
