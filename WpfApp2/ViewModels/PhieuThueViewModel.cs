@@ -196,15 +196,15 @@ namespace WpfApp2.ViewModels
             db.SaveChanges();
 
 
-            // Luu CTPT
-            //var dsCTPT = db.CTPTs.ToList();
-            //int maCTPT = 0;
-            //if(dsCTPT.Count != 0)
-            //{
-            //    maCTPT = dsCTPT[dsCTPT.Count - 1].MACTPT + 1;
-            //}
-            //db.CTPTs.Add(new CTPT() { MAKHACHHANG = dsKH[0].MAKHACHHANG, MAPHIEUTHUE = maPhieuThue, MACTPT = maCTPT });
-            //db.SaveChanges();
+            //Luu CTPT
+            var dsCTPT = db.CTPTs.ToList();
+            int maCTPT = 0;
+            if (dsCTPT.Count != 0)
+            {
+                maCTPT = dsCTPT[dsCTPT.Count - 1].MACTPT + 1;
+            }
+            db.CTPTs.Add(new CTPT() { MAKHACHHANG = dsKH[0].MAKHACHHANG, MAPHIEUTHUE = maPhieuThue, MACTPT = maCTPT });
+            db.SaveChanges();
 
             var result = MessageBox.Show("Đã lưu thành công!", "Thông báo", MessageBoxButton.OK);
             switch (result)

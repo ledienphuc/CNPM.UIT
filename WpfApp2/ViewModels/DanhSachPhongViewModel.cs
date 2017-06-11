@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
+using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -158,7 +159,17 @@ namespace WpfApp2.ViewModels
             ThemPhongCommand = new RelayCommand<UIElementCollection>(ThemPhong);
             XoaPhongCommand = new RelayCommand(XoaPhong);
             SuaPhongCommand = new RelayCommand<UIElementCollection>(SuaPhong);
+            Messenger.Default.Register<OpenWindowMessage>(this, NotificationMessageReceived);
         }
+
+        private void NotificationMessageReceived(OpenWindowMessage msg)
+        {
+            if (msg.Message == "Close Window")
+            {
+                LoadData();
+            }
+        }
+
         private void ThemPhong(UIElementCollection UI)
         {
             KhachSanContext db = new KhachSanContext();

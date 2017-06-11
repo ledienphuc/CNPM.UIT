@@ -51,7 +51,10 @@ namespace WpfApp2.ViewModels
             LoaiPhong = thongTinPhong.LOAIPHONG.TENLOAIPHONG;
             DonGia = thongTinPhong.LOAIPHONG.DONGIA;
 
+            // Lay danh sach khach hang thue phong do lan cuoi cuoi de lap hoa don
+
             var danhSachKhachHangDB = (from kh in db.KHACHHANGs
+                                       join ctpt in db.CTPTs on kh.MAKHACHHANG equals ctpt.MAKHACHHANG
                                      where kh.PHONG.TENPHONG == TenPhong
                                      select new { kh.TENKHACHHANG, kh.LOAIKHACH.TENLOAIKHACH, kh.CMND, kh.DIACHI }).ToList();
             foreach(var KH in danhSachKhachHangDB)
